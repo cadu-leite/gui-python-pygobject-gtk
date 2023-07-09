@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="ExampleWindow" parent="AdwApplicationWindow">
+    <property name="title">Python e GTK: PyGObject libadwaita style class caption ui file</property>
+    <property name="default-width">683</property>
+    <property name="default-height">384</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">1</property>
+        <property name="spacing">12</property>
+        <child type="titlebar">
+          <object class="GtkHeaderBar" id="header_bar">
+            <child type="end">
+              <object class="GtkMenuButton">
+                <property name="icon-name">open-menu-symbolic</property>
+                <property name="menu-model">primary_menu</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">1</property>
+            <property name="margin-top">12</property>
+            <property name="margin-end">12</property>
+            <property name="margin-bottom">12</property>
+            <property name="margin-start">12</property>
+            <property name="spacing">12</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="label">A classe de estilo caption tornam o texto menor. Ele deve ser usado para diferenciar o subtexto que acompanha o texto no estilo regular body.</property>
+                <property name="vexpand">true</property>
+                <property name="wrap">true</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_caption">
+                <property name="label">Lorem Ipsum is simply dummy...
+Classes: ['caption'].</property>
+                <property name="vexpand">true</property>
+                <property name="wrap">true</property>
+                <style>
+                  <class name="caption"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton">
+                <property name="label">Adicionar/remover classe</property>
+                <signal name="clicked" handler="on_button_clicked"/>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+  <menu id="primary_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="true">Preferências</attribute>
+        <attribute name="action">app.preferences</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>

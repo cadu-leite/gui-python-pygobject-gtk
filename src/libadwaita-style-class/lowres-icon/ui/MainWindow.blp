@@ -1,0 +1,61 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $ExampleWindow : Adw.ApplicationWindow {
+  title: "Python e GTK: PyGObject libadwaita style class lowres-icon ui file";
+  default-width: 683;
+  default-height: 384;
+
+  Gtk.Box {
+    orientation: vertical;
+    spacing: 12;
+
+    [titlebar]
+    Gtk.HeaderBar header_bar {
+      [end]
+      Gtk.MenuButton {
+        icon-name: "open-menu-symbolic";
+        menu-model: primary_menu;
+      }
+    }
+
+    Gtk.Box {
+      orientation: vertical;
+      margin-top: 12;
+      margin-end: 12;
+      margin-bottom: 12;
+      margin-start: 12;
+      spacing: 12;
+
+      Gtk.Label label {
+        label: "Os ícones de aplicativos do GNOME requerem uma sombra para serem legíveis em um fundo claro. As classes de estilo .icon-dropshadow e .lowres-icon fornecem isso quando usadas com GtkImage ou qualquer outro widget que contenha uma imagem.\n.lowres-icon deve ser usado para ícones de 32×32 ou menores, e .icon-dropshadow deve ser usado caso contrário.\nClasses: ['icon-dropshadow']";
+        vexpand: true;
+        wrap: true;
+      }
+
+      Gtk.Image image_lowres_icon {
+        icon-name: "software-update-urgent-symbolic";
+        pixel-size: 32;
+        styles [
+          "lowres-icon",
+        ]
+      }
+
+      Gtk.Button {
+        label: 'Adicionar/remover classe';
+        vexpand: true;
+        valign: end;
+        clicked => $on_button_clicked();
+      }
+    }
+  }
+}
+
+menu primary_menu {
+  section {
+    item {
+      label: _("Preferências");
+      action: "app.preferences";
+    }
+  }
+}

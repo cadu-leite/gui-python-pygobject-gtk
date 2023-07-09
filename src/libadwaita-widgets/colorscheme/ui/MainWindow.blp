@@ -1,0 +1,43 @@
+using Gtk 4.0;
+
+template $ExampleWindow: Gtk.ApplicationWindow {
+  title: "Python e GTK: PyGObject libadwaita Adw.ColorScheme() ui file.";
+  default-width: 683;
+  default-height: 384;
+
+  [titlebar]
+  Gtk.HeaderBar header_bar {
+    [end]
+    Gtk.MenuButton {
+      icon-name: "open-menu-symbolic";
+      menu-model: primary_menu;
+    }
+  }
+
+  Gtk.Box {
+    orientation: horizontal;
+    margin-top: 12;
+    margin-end: 12;
+    margin-bottom: 12;
+    margin-start: 12;
+    spacing: 12;
+
+    Gtk.Label {
+      label: "Clique no switch para ativar ou desativar o modo escuro (dark mode)";
+    }
+
+    Switch switch {
+      valign: center;
+      notify::active => $on_switch_active();
+    }
+  }
+}
+
+menu primary_menu {
+  section {
+    item {
+      label: _("Preferências");
+      action: "app.preferences";
+    }
+  }
+}
