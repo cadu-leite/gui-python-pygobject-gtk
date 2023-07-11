@@ -26,20 +26,21 @@ template $ExampleWindow: Gtk.ApplicationWindow {
       name: "check_button_01";
       label: "Item 01";
       active: true;
+      group: check_button_group;
       toggled => $on_radio_button_toggled();
     }
     
     Gtk.CheckButton check_button_02 {
       name: "check_button_02";
       label: "Item 02";
-      group: check_button_01;
+      group: check_button_group;
       toggled => $on_radio_button_toggled();
     }
     
     Gtk.CheckButton check_button_03 {
       name: "check_button_03";
       label: "Item 03";
-      group: check_button_01;
+      group: check_button_group;
       toggled => $on_radio_button_toggled();
     }
   }

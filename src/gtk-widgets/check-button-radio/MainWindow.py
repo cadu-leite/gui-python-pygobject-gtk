@@ -42,22 +42,24 @@ class ExampleWindow(Gtk.ApplicationWindow):
         vbox.set_margin_start(margin=12)
         self.set_child(child=vbox)
 
+        check_button_group = Gtk.CheckButton.new()
+
         check_button_01 = Gtk.CheckButton.new_with_label(label='Item 01')
         check_button_01.set_name(name='check_button_01')
         check_button_01.set_active(setting=True)
-        check_button_01.set_group(group=None)
+        check_button_01.set_group(group=check_button_group)
         check_button_01.connect('toggled', self.on_radio_button_toggled)
         vbox.append(child=check_button_01)
 
         check_button_02 = Gtk.CheckButton.new_with_label(label='Item 02')
         check_button_02.set_name(name='check_button_02')
-        check_button_02.set_group(group=check_button_01)
+        check_button_02.set_group(group=check_button_group)
         check_button_02.connect('toggled', self.on_radio_button_toggled)
         vbox.append(child=check_button_02)
 
         check_button_03 = Gtk.CheckButton.new_with_label(label='Item 03')
         check_button_03.set_name(name='check_button_03')
-        check_button_03.set_group(group=check_button_01)
+        check_button_03.set_group(group=check_button_group)
         check_button_03.connect('toggled', self.on_radio_button_toggled)
         vbox.append(child=check_button_03)
 
