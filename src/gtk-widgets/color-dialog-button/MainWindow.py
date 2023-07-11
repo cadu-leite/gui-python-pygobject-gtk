@@ -43,6 +43,7 @@ class ExampleWindow(Gtk.ApplicationWindow):
         vbox.append(child=label)
 
         color_dialog = Gtk.ColorDialog.new()
+        color_dialog.set_modal(modal=True)
         color_dialog.set_title(title='Selecione uma cor.')
 
         color_dialog_button = Gtk.ColorDialogButton.new(dialog=color_dialog)

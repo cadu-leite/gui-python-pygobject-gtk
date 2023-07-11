@@ -26,7 +26,7 @@
         <child>
           <object class="GtkDropDown">
             <property name="model">brazilian_states</property>
-            <property name="selected">1</property>
+            <property name="selected">2</property>
             <signal name="notify::selected-item" handler="on_selected_item"/>
           </object>
         </child>

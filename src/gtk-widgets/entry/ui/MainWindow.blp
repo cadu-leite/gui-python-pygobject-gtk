@@ -27,7 +27,8 @@ template $ExampleWindow: Gtk.ApplicationWindow {
     }
 
     Entry {
-      primary-icon-name: "system-search-symbolic";
+      // primary-icon-name: "system-search-symbolic";
+      secondary-icon-name: "system-search-symbolic";
       activate => $on_key_enter_pressed();
       icon-press => $on_icon_pressed();
     }

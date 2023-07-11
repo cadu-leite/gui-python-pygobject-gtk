@@ -13,10 +13,10 @@ from gi.repository import Adw, Gio, Gtk
 
 Adw.init()
 
+# Definindo o diretório padrão.
+HOME = Path.home()
 
 class DialogSelecFolder(Gtk.FileChooserDialog):
-    # Definindo o diretório padrão.
-    home = Path.home()
 
     def __init__(self, parent, select_multiple):
         super().__init__(transient_for=parent, use_header_bar=True)

@@ -138,12 +138,6 @@ Obrigado por sua doação é através dela que consigo manter este conteúdo �
 
 ![Gtk.ColorDialogButton](./docs/images/gtk-widgets/color-dialog-button.png)
 
-#### Gtk.Dialog
-
-- [Gtk.Dialog](./src/gtk-widgets/dialog).
-
-![Gtk.Dialog](./docs/images/gtk-widgets/dialog.png)
-
 #### Drag and drop
 
 - [Drag and drop](./src/gtk-widgets/drag-and-drop).
@@ -396,6 +390,8 @@ Obrigado por sua doação é através dela que consigo manter este conteúdo �
 
 ### Deprecated
 
-- Gtk.EntryCompletation
-- Gtk.FontButton
-- Gtk.InfoBar
+- `Gtk.EntryCompletation`: Não há subistituto.
+- `Gtk.FontButton`: Utilizar `Gtk.FontDialogButton`.
+- `Gtk.InfoBar`: Utilizar `Gtk.Revealer` com um `Gtk.Box`.
+- `Gtk.Dialog`: Utilizar `Gtk.Window`.
+- `Gtk.FileChooserDialog`: Utilizar `GtkFileDialog`

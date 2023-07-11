@@ -42,6 +42,7 @@
   </template>
   <object class="GtkColorDialog" id="color_dialog">
     <property name="title">Selecione uma cor.</property>
+    <property name="modal">true</property>
   </object>
   <menu id="primary_menu">
     <section>

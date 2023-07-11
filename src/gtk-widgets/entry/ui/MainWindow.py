@@ -48,11 +48,11 @@ class ExampleWindow(Gtk.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def on_key_enter_pressed(self, entry):
-        print(f'Valor digitado no entry: {entry.get_text()}')
+        print(f'(activate) Valor digitado no entry: {entry.get_text()}')
 
     @Gtk.Template.Callback()
     def on_icon_pressed(self, entry, entryiconposition):
-        print(f'Valor digitado no entry: {entry.get_text()}')
+        print(f'(icon-press) Valor digitado no entry: {entry.get_text()}')
 
 
 class ExampleApplication(Gtk.Application):
