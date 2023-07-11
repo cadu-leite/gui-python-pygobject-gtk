@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Python e GTK: PyGObject Gtk.CheckButton() radio button.
+"""Python e GTK: PyGObject Gtk.CheckButton() radio.
 
-No Gtk 4 o RadioButton é um CheckButton que possui um group.
+No GTK 4 ou superior o RadioButton é um CheckButton que possui um group.
 """
 
 import gi
@@ -19,7 +19,8 @@ class ExampleWindow(Gtk.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.set_title(title='Python e GTK: PyGObject Gtk.CheckButton() radio button')
+        self.set_title(
+            title='Python e GTK: PyGObject Gtk.CheckButton() radio')
         self.set_default_size(width=int(1366 / 2), height=int(768 / 2))
         self.set_size_request(width=int(1366 / 2), height=int(768 / 2))
 
@@ -35,36 +36,35 @@ class ExampleWindow(Gtk.ApplicationWindow):
         header_bar.pack_end(child=menu_button)
 
         vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=12)
-        # No GTK 3: set_border_width().
         vbox.set_margin_top(margin=12)
         vbox.set_margin_end(margin=12)
         vbox.set_margin_bottom(margin=12)
         vbox.set_margin_start(margin=12)
-        # Adicionando o box na janela principal.
-        # No GTK 3: add().
         self.set_child(child=vbox)
 
         check_button_01 = Gtk.CheckButton.new_with_label(label='Item 01')
+        check_button_01.set_name(name='check_button_01')
+        check_button_01.set_active(setting=True)
         check_button_01.set_group(group=None)
-        check_button_01.connect('toggled', self.on_radio_button_toggled, '1')
+        check_button_01.connect('toggled', self.on_radio_button_toggled)
         vbox.append(child=check_button_01)
 
         check_button_02 = Gtk.CheckButton.new_with_label(label='Item 02')
+        check_button_02.set_name(name='check_button_02')
         check_button_02.set_group(group=check_button_01)
-        check_button_02.connect('toggled', self.on_radio_button_toggled, '2')
+        check_button_02.connect('toggled', self.on_radio_button_toggled)
         vbox.append(child=check_button_02)
 
         check_button_03 = Gtk.CheckButton.new_with_label(label='Item 03')
+        check_button_03.set_name(name='check_button_03')
         check_button_03.set_group(group=check_button_01)
-        check_button_03.connect('toggled', self.on_radio_button_toggled, '3')
+        check_button_03.connect('toggled', self.on_radio_button_toggled)
         vbox.append(child=check_button_03)
 
-    def on_radio_button_toggled(self, widget, data):
+    def on_radio_button_toggled(self, widget):
         if widget.get_active():
-            state = 'Marcado'
-        else:
-            state = 'desmarcado'
-        print(f'Botão {data} {state}')
+            print(f'Texto do radio: {widget.get_label()}')
+            print(f'Nome do widget: {widget.get_name()}')
 
 
 class ExampleApplication(Gtk.Application):
