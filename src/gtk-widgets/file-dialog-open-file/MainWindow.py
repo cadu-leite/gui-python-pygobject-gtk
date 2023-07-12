@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Python e GTK: PyGObject Gtk.FileDialog()."""
+"""Python e GTK: PyGObject Gtk.FileDialog() open file."""
 
 import gi
 
@@ -10,14 +10,32 @@ from gi.repository import Adw, Gio, Gtk
 
 Adw.init()
 
+FILTER_ALL_FILES = Gtk.FileFilter()
+FILTER_ALL_FILES.set_name(name='Todos')
+FILTER_ALL_FILES.add_pattern(pattern='*')
+
+FILTER_PY_FILES = Gtk.FileFilter()
+FILTER_PY_FILES.set_name(name='Python')
+FILTER_PY_FILES.add_pattern(pattern='*.py')
+FILTER_PY_FILES.add_mime_type(mime_type='text/x-python')
+
+FILTER_TXT_FILES = Gtk.FileFilter()
+FILTER_TXT_FILES.set_name(name='txt')
+FILTER_TXT_FILES.add_pattern(pattern='*.txt')
+FILTER_TXT_FILES.add_mime_type(mime_type='text/plain')
+
 
 class ExampleWindow(Gtk.ApplicationWindow):
+    gio_list_store = Gio.ListStore.new(Gtk.FileFilter)
+    gio_list_store.append(item=FILTER_ALL_FILES)
+    gio_list_store.append(item=FILTER_PY_FILES)
+    gio_list_store.append(item=FILTER_TXT_FILES)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
         self.set_title(
-            title='Python e GTK: PyGObject Gtk.FileDialog()')
+            title='Python e GTK: PyGObject Gtk.FileDialog() open file',
+        )
         self.set_default_size(width=int(1366 / 2), height=int(768 / 2))
         self.set_size_request(width=int(1366 / 2), height=int(768 / 2))
 
@@ -61,15 +79,14 @@ class ExampleWindow(Gtk.ApplicationWindow):
         file_dialog = Gtk.FileDialog.new()
         file_dialog.set_title(title='Selecionar arquivo.')
         file_dialog.set_modal(modal=True)
-        file_dialog.open(
-            parent=self,
-            callback=self.on_file_dialog_dismissed,
-        )
+        file_dialog.set_filters(filters=self.gio_list_store)
+        file_dialog.open(parent=self, callback=self.on_file_dialog_dismissed)
 
     def on_button_select_files_clicked(self, widget):
         file_dialog = Gtk.FileDialog.new()
         file_dialog.set_title(title='Selecionar arquivos.')
         file_dialog.set_modal(modal=True)
+        file_dialog.set_filters(filters=self.gio_list_store)
         file_dialog.open_multiple(
             parent=self,
             callback=self.on_files_dialog_dismissed,
@@ -79,11 +96,15 @@ class ExampleWindow(Gtk.ApplicationWindow):
         local_file = file_dialog.open_finish(gio_task)
         print(f'Nome do arquivo: {local_file.get_basename()}')
         print(f'Caminho do arquivo: {local_file.get_path()}')
-        print(f'URI do arquivo: {local_file.get_uri()}')
+        print(f'URI do arquivo: {local_file.get_uri()}\n')
 
     def on_files_dialog_dismissed(self, file_dialog, gio_task):
-        local_file = file_dialog.open_multiple_finish(gio_task)
-        print(local_file)
+        local_files = file_dialog.open_multiple_finish(gio_task)
+        print(local_files)
+        for local_file in local_files:
+            print(f'Nome do arquivo: {local_file.get_basename()}')
+            print(f'Caminho do arquivo: {local_file.get_path()}')
+            print(f'URI do arquivo: {local_file.get_uri()}\n')
 
 
 class ExampleApplication(Gtk.Application):
