@@ -5,6 +5,7 @@ No GTK 4 ou superior o RadioButton é um CheckButton que possui um group.
 """
 
 import subprocess
+import sys
 from pathlib import Path
 
 import gi
@@ -90,7 +91,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
-    import sys
 
     app = ExampleApplication()
     app.run(sys.argv)

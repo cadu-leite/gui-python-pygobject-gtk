@@ -2,6 +2,7 @@
 """Python e GTK: PyGObject Gtk.ActionBar() ui file."""
 
 import subprocess
+import sys
 from pathlib import Path
 
 import gi
@@ -85,7 +86,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
-    import sys
-
+    
     app = ExampleApplication()
     app.run(sys.argv)
