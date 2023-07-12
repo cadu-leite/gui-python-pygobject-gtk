@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Python e GTK: PyGObject Gtk.FileDialog() open file."""
+"""Python e GTK: PyGObject Gtk.FileDialog() save."""
 
 import gi
 
@@ -34,7 +34,7 @@ class ExampleWindow(Gtk.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.set_title(
-            title='Python e GTK: PyGObject Gtk.FileDialog() open file',
+            title='Python e GTK: PyGObject Gtk.FileDialog() save',
         )
         self.set_default_size(width=int(1366 / 2), height=int(768 / 2))
         self.set_size_request(width=int(1366 / 2), height=int(768 / 2))
@@ -57,54 +57,23 @@ class ExampleWindow(Gtk.ApplicationWindow):
         vbox.set_margin_start(margin=12)
         self.set_child(child=vbox)
 
-        button_select_file = Gtk.Button.new_with_label(
-            label='Selecionar arquivo',
-        )
-        button_select_file.connect(
-            'clicked',
-            self.on_button_select_file_clicked,
-        )
-        vbox.append(child=button_select_file)
+        button_save = Gtk.Button.new_with_label(label='Salvar')
+        button_save.connect('clicked', self.on_button_save_clicked)
+        vbox.append(child=button_save)
 
-        button_select_files = Gtk.Button.new_with_label(
-            label='Selecionar arquivos',
-        )
-        button_select_files.connect(
-            'clicked',
-            self.on_button_select_files_clicked,
-        )
-        vbox.append(child=button_select_files)
-
-    def on_button_select_file_clicked(self, widget):
+    def on_button_save_clicked(self, widget):
         file_dialog = Gtk.FileDialog.new()
-        file_dialog.set_title(title='Selecionar arquivo.')
+        file_dialog.set_title(title='Salvar')
+        file_dialog.set_initial_name(name='nome-do-arquivo')
         file_dialog.set_modal(modal=True)
         file_dialog.set_filters(filters=self.gio_list_store)
-        file_dialog.open(parent=self, callback=self.on_file_dialog_dismissed)
-
-    def on_button_select_files_clicked(self, widget):
-        file_dialog = Gtk.FileDialog.new()
-        file_dialog.set_title(title='Selecionar arquivos.')
-        file_dialog.set_modal(modal=True)
-        file_dialog.set_filters(filters=self.gio_list_store)
-        file_dialog.open_multiple(
-            parent=self,
-            callback=self.on_files_dialog_dismissed,
-        )
+        file_dialog.save(parent=self, callback=self.on_file_dialog_dismissed)
 
     def on_file_dialog_dismissed(self, file_dialog, gio_task):
-        local_file = file_dialog.open_finish(gio_task)
+        local_file = file_dialog.save_finish(gio_task)
         print(f'Nome do arquivo: {local_file.get_basename()}')
         print(f'Caminho do arquivo: {local_file.get_path()}')
         print(f'URI do arquivo: {local_file.get_uri()}\n')
-
-    def on_files_dialog_dismissed(self, file_dialog, gio_task):
-        local_files = file_dialog.open_multiple_finish(gio_task)
-        print(local_files)
-        for local_file in local_files:
-            print(f'Nome do arquivo: {local_file.get_basename()}')
-            print(f'Caminho do arquivo: {local_file.get_path()}')
-            print(f'URI do arquivo: {local_file.get_uri()}\n')
 
 
 class ExampleApplication(Gtk.Application):
