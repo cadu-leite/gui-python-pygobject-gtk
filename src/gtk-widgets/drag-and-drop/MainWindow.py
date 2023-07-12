@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Python e GTK: PyGObject drag and drop."""
+"""Python e GTK:  PyGObject drag and drop."""
 
 import gi
 
@@ -24,7 +24,8 @@ class DropArea(Gtk.Label):
         drag_source.connect('drag-end', self.on_drag_end)
         drag_source.connect('drag-cancel', self.on_drag_cancel)
 
-        drop_target = Gtk.DropTarget.new(GObject.TYPE_STRING, Gdk.DragAction.COPY)
+        drop_target = Gtk.DropTarget.new(
+            GObject.TYPE_STRING, Gdk.DragAction.COPY)
         drop_target.connect('drop', self.on_drop)
 
         self.add_controller(drag_source)
@@ -91,7 +92,8 @@ class ExampleWindow(Gtk.ApplicationWindow):
         drag_source.connect('drag-end', self.on_drag_end)
         drag_source.connect('drag-cancel', self.on_drag_cancel)
 
-        drop_target = Gtk.DropTarget.new(GObject.TYPE_STRING, Gdk.DragAction.COPY)
+        drop_target = Gtk.DropTarget.new(
+            GObject.TYPE_STRING, Gdk.DragAction.COPY)
         drop_target.connect('drop', self.on_drop)
 
         label = Gtk.Label.new('Arraste e solte algo aqui.')
