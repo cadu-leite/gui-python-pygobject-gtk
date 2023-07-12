@@ -74,6 +74,42 @@ Obrigado por sua doação é através dela que consigo manter este conteúdo �
 
 ---
 
+## Extra
+
+### GTK
+
+- [Documentação GTK 3](https://docs.gtk.org/gtk3/).
+- [Documentação GTK 4](https://docs.gtk.org/gtk4/).
+
+### Libadwaita
+
+- [Documentação 1.x](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1-latest/).
+
+### GNOME
+
+- [Site oficial](https://www.gnome.org/).
+- [GNOME Human Interface Guidelines (HIG)](https://wiki.gnome.org/Design/HIG).
+- [Blog](https://blogs.gnome.org/).
+
+### Desenvolvimento
+
+- [GNOME Builder](https://apps.gnome.org/pt-BR/app/org.gnome.Builder/).
+- [Workbench](https://apps.gnome.org/pt-BR/app/re.sonny.Workbench/).
+- [Cambalache](https://flathub.org/pt-BR/apps/ar.xjuan.Cambalache).
+
+### Softwares
+
+- [GNOME Apps](https://apps.gnome.org/pt-BR/).
+- [GNOME circle](https://circle.gnome.org/).
+- [Awesome GTK](https://github.com/valpackett/awesome-gtk).
+
+### Flatpak
+
+- [Site oficial](https://www.flatpak.org/).
+- [flathub](https://flathub.org/).
+
+---
+
 ## GTK
 
 ### 🖥 Widgets
@@ -156,23 +192,23 @@ Obrigado por sua doação é através dela que consigo manter este conteúdo �
 
 ![Gtk.Entry](./docs/images/gtk-widgets/entry.png)
 
-#### Gtk.FileChooserDialog (folder)
+#### Gtk.FileDialog (folder)
 
-- [Gtk.FileChooserDialog (folder)](./src/gtk-widgets/file-chooser-dialog-folder).
+- [Gtk.FileDialog (folder)](./src/gtk-widgets/file-dialog-folder).
 
-![Gtk.FileChooserDialog (folder)](./docs/images/gtk-widgets/file-chooser-dialog-folder.png)
+![Gtk.FileDialog (folder)](./docs/images/gtk-widgets/file-dialog-folder.png)
 
-#### Gtk.FileChooserDialog (open)
+#### Gtk.FileDialog (open)
 
-- [Gtk.FileChooserDialog (open)](./src/gtk-widgets/file-chooser-dialog-open).
+- [Gtk.FileDialog (open)](./src/gtk-widgets/file-dialog-open).
 
-![Gtk.FileChooserDialog (open)](./docs/images/gtk-widgets/file-chooser-dialog-open.png)
+![Gtk.FileDialog (open)](./docs/images/gtk-widgets/file-dialog-open.png)
 
-#### Gtk.FileChooserDialog (save)
+#### Gtk.FileDialog (save)
 
-- [Gtk.FileChooserDialog (save)](./src/gtk-widgets/file-chooser-dialog-save).
+- [Gtk.FileDialog (save)](./src/gtk-widgets/file-dialog-save).
 
-![Gtk.FileChooserDialog (save)](./docs/images/gtk-widgets/file-chooser-dialog-save.png)
+![Gtk.FileDialog (save)](./docs/images/gtk-widgets/file-dialog-save.png)
 
 #### Gtk.Fixed
 

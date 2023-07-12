@@ -2,7 +2,6 @@
 """Python e GTK: PyGObject Gtk.DropDown() ui file."""
 
 import subprocess
-import sys
 from pathlib import Path
 
 import gi

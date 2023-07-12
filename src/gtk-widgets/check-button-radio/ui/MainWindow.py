@@ -5,7 +5,6 @@ No GTK 4 ou superior o RadioButton é um CheckButton que possui um group.
 """
 
 import subprocess
-import sys
 from pathlib import Path
 
 import gi
