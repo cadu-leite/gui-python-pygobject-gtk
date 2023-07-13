@@ -5,6 +5,7 @@ import gi
 
 gi.require_version(namespace='Gtk', version='4.0')
 gi.require_version(namespace='Adw', version='1')
+
 from gi.repository import Adw, Gio, Gtk
 
 Adw.init()
@@ -52,15 +53,9 @@ class ExampleWindow(Gtk.ApplicationWindow):
         button_right_arrow = Gtk.Button.new_from_icon_name(
             icon_name='go-previous-symbolic-rtl',
         )
-        button_right_arrow.connect('clicked', self.on_button_right_arrow_cliqued)
+        button_right_arrow.connect(
+            'clicked', self.on_button_right_arrow_cliqued)
         hbox.append(child=button_right_arrow)
-
-        text_view = Gtk.TextView.new()
-        text_view.set_margin_top(margin=12)
-        text_view.set_margin_end(margin=12)
-        text_view.set_margin_bottom(margin=12)
-        text_view.set_margin_start(margin=12)
-        self.set_child(child=text_view)
 
     @staticmethod
     def on_button_send_mail_cliqued(button):

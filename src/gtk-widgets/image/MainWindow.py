@@ -8,8 +8,6 @@ O tamanho é calculado de forma automatica pelo GTK.
 Caso queira carregar uma imagem utilize `Gtk.Picture()`.
 """
 
-import subprocess
-import sys
 from pathlib import Path
 
 import gi

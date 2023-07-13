@@ -50,7 +50,8 @@ class ExampleWindow(Gtk.ApplicationWindow):
             row = Gtk.ListBoxRow.new()
             row.set_selectable(selectable=False)
 
-            hbox = Gtk.Box.new(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
+            hbox = Gtk.Box.new(
+                orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
             # Adicionando container na linha
             row.set_child(child=hbox)
 
