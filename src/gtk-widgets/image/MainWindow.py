@@ -3,7 +3,7 @@
 
 É adequando para carregar ícones.
 
-O tamanho é calculado de forma automatica pelo GTK.
+O tamanho é calculado de forma automática pelo GTK.
 
 Caso queira carregar uma imagem utilize `Gtk.Picture()`.
 """

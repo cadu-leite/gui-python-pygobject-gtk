@@ -24,26 +24,93 @@ template $ExampleWindow: Gtk.ApplicationWindow {
     spacing: 12;
 
     ListBox {
+      selection-mode: none;
+        styles [
+          "boxed-list",
+        ]
+      Gtk.ListBoxRow{
+        selectable: false;
+        Gtk.Box {
+          orientation: horizontal;
+          Gtk.Label {
+            label: "Linha 01";
+            hexpand: true;
+            xalign: 0;
+            margin-top: 6;
+            margin-end: 6;
+            margin-bottom: 6;
+            margin-start: 6;
+          }
+          Gtk.Switch{
+            margin-top: 6;
+            margin-end: 6;
+            margin-bottom: 6;
+            margin-start: 6;
+          }
+        }
+      }
+      Gtk.ListBoxRow{
+        selectable: false;
+        Gtk.Box {
+          orientation: horizontal;
+          Gtk.Label {
+            label: "Linha 02";
+            hexpand: true;
+            xalign: 0;
+            margin-top: 6;
+            margin-end: 6;
+            margin-bottom: 6;
+            margin-start: 6;
+          }
+          Gtk.Switch{
+            margin-top: 6;
+            margin-end: 6;
+            margin-bottom: 6;
+            margin-start: 6;
+          }
+        }
+      }
+      Gtk.ListBoxRow{
+        selectable: false;
+        Gtk.Box {
+          orientation: horizontal;
+          Gtk.Label {
+            label: "Linha 03";
+            hexpand: true;
+            xalign: 0;
+            margin-top: 6;
+            margin-end: 6;
+            margin-bottom: 6;
+            margin-start: 6;
+          }
+          Gtk.Switch{
+            margin-top: 6;
+            margin-end: 6;
+            margin-bottom: 6;
+            margin-start: 6;
+          }
+        }
+      }
+    }
+
+    ListBox {
       selection-mode: single;
       show-separators: true;
       vexpand: true;
-
+      row-activated => $on_row_clicked();
       styles [
         "boxed-list",
       ]
-
       Gtk.ListBoxRow {
         Gtk.Label {
           label: "Linha 01";
         }
       }
-
       Gtk.ListBoxRow {
         Gtk.Label {
           label: "Linha 02";
         }
       }
-
       Gtk.ListBoxRow {
         Gtk.Label {
           label: "Linha 03";

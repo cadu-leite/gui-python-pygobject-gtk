@@ -41,9 +41,6 @@
         <property name="margin-bottom">12</property>
         <property name="margin-start">12</property>
         <property name="spacing">12</property>
-        <child>
-          <object class="GtkTextView"></object>
-        </child>
       </object>
     </child>
   </template>

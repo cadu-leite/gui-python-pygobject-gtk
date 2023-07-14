@@ -12,8 +12,8 @@ Adw.init()
 
 
 class ExampleWindow(Gtk.ApplicationWindow):
-    # Dados que serão inseridos nas linhas do listbox_2
-    itens = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5']
+    # Dados que serão inseridos nas linhas do list_box_02.
+    itens = ['Item 01', 'Item 02', 'Item 03']
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -41,21 +41,21 @@ class ExampleWindow(Gtk.ApplicationWindow):
         vbox.set_margin_start(margin=12)
         self.set_child(child=vbox)
 
-        listbox_1 = Gtk.ListBox.new()
-        listbox_1.set_selection_mode(mode=Gtk.SelectionMode.NONE)
-        vbox.append(child=listbox_1)
+        list_box_01 = Gtk.ListBox.new()
+        list_box_01.set_selection_mode(mode=Gtk.SelectionMode.NONE)
+        vbox.append(child=list_box_01)
 
         # Loop para criar os widgets.
         for n in range(1, 4):
-            row = Gtk.ListBoxRow.new()
-            row.set_selectable(selectable=False)
+            list_box_row = Gtk.ListBoxRow.new()
+            list_box_row.set_selectable(selectable=False)
 
             hbox = Gtk.Box.new(
                 orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
             # Adicionando container na linha
-            row.set_child(child=hbox)
+            list_box_row.set_child(child=hbox)
 
-            label = Gtk.Label.new(str=f'Linha {n}')
+            label = Gtk.Label.new(str=f'Linha 0{n}')
             label.set_margin_top(margin=6)
             label.set_margin_end(margin=6)
             label.set_margin_bottom(margin=6)
@@ -71,23 +71,21 @@ class ExampleWindow(Gtk.ApplicationWindow):
             switch.set_margin_start(margin=6)
             hbox.append(child=switch)
 
-            listbox_1.append(child=row)
+            list_box_01.append(child=list_box_row)
 
         # Criando um segundo ListBox
-        listbox_2 = Gtk.ListBox.new()
-
-        # Definindo um sinal (evento).
-        listbox_2.connect('row-activated', self._on_row_clicked)
-        vbox.append(child=listbox_2)
+        list_box_02 = Gtk.ListBox.new()
+        list_box_02.connect('row-activated', self.on_row_clicked)
+        vbox.append(child=list_box_02)
 
         # Loop para criar as linhas.
         for item in self.itens:
             label = Gtk.Label.new(str=item)
             label.set_margin_top(6)
             label.set_margin_bottom(6)
-            listbox_2.append(child=label)
+            list_box_02.append(child=label)
 
-    def _on_row_clicked(self, listbox, listboxrow):
+    def on_row_clicked(self, listbox, listboxrow):
         print(f'Clicou no {self.itens[listboxrow.get_index()]}')
 
 

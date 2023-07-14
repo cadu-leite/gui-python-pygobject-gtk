@@ -31,10 +31,6 @@ class ExampleWindow(Gtk.ApplicationWindow):
         menu_button.set_menu_model(menu_model=menu_button_model)
         header_bar.pack_end(child=menu_button)
 
-        header_bar = Gtk.HeaderBar.new()
-        header_bar.set_show_title_buttons(setting=True)
-        self.set_titlebar(titlebar=header_bar)
-
         button_mail = Gtk.Button.new_from_icon_name(
             icon_name='mail-send-receive-symbolic',
         )

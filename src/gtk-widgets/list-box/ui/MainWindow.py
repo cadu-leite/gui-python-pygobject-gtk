@@ -43,8 +43,14 @@ elif operational_system == 'win32':
 class ExampleWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'ExampleWindow'
 
+    itens = ['Item 01', 'Item 02', 'Item 03']
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+    @Gtk.Template.Callback()
+    def on_row_clicked(self, listbox, listboxrow):
+        print(f'Clicou no {self.itens[listboxrow.get_index()]}')
 
 
 class ExampleApplication(Gtk.Application):
