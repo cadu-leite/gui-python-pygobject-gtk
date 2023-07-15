@@ -8,7 +8,7 @@ template $ExampleWindow: Gtk.ApplicationWindow {
   [titlebar]
   Gtk.HeaderBar header_bar {
     [end]
-    Gtk.MenuButton {
+    Gtk.MenuButton menu_button {
       icon-name: "open-menu-symbolic";
       menu-model: primary_menu;
     }
@@ -21,5 +21,20 @@ menu primary_menu {
       label: _("Preferências");
       action: "app.preferences";
     }
+  }
+  section {
+    label: _("Título da seção");
+    // Shorthand (forma abreviada).
+    item ("Item 01", "win.item1")
+    item ("Item 02", "win.item2")
+
+  }
+  submenu {
+    label: _("Título do submenu");
+    item {
+      label: _("Item 03");
+      action: "win.item3";
+    }
+    item ("Item 04", "win.item4")
   }
 }

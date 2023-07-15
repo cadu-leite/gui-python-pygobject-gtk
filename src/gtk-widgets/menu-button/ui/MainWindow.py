@@ -43,8 +43,35 @@ elif operational_system == 'win32':
 class ExampleWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'ExampleWindow'
 
+    menu_button = Gtk.Template.Child(name='menu_button')
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        popover = self.menu_button.get_popover()
+        popover.set_offset(x_offset=-50, y_offset=0)
+
+        self.create_win_action(
+            name='item1', callback=self.on_menu_item_clicked)
+        self.create_win_action(
+            name='item2', callback=self.on_menu_item_clicked)
+        self.create_win_action(
+            name='item3', callback=self.on_menu_item_clicked)
+        self.create_win_action(
+            name='item4', callback=self.on_menu_item_clicked)
+
+    def on_menu_item_clicked(self, action, param):
+        print(action.get_name())
+
+    def create_win_action(self, name, callback, shortcuts=None):
+        action = Gio.SimpleAction.new(name=name, parameter_type=None)
+        action.connect('activate', callback)
+        self.add_action(action=action)
+        if shortcuts:
+            self.set_accels_for_action(
+                detailed_action_name=f'win.{name}',
+                accels=shortcuts,
+            )
 
 
 class ExampleApplication(Gtk.Application):
