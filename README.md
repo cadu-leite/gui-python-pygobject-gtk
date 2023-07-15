@@ -252,6 +252,14 @@ Obrigado por sua doação é através dela que consigo manter este conteúdo �
 
 ![Gtk.MenuButton](./docs/images/gtk-widgets/menu-button.png)
 
+Erro:
+
+```bash
+_gtk_css_corner_value_get_y: assertion 'corner->class == &GTK_CSS_VALUE_CORNER' failed
+```
+
+[Discourse](https://discourse.gnome.org/t/menu-button-gives-error-messages-with-latest-gtk4/15689).
+
 #### Gtk.Overlay
 
 - [Gtk.Overlay](./src/gtk-widgets/overlay).
