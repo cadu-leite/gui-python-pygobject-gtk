@@ -31,10 +31,7 @@ class ExampleWindow(Gtk.ApplicationWindow):
         header_bar.pack_end(child=menu_button)
 
         popover = menu_button.get_popover()
-        # popover.set_position(position=Gtk.PositionType.BOTTOM)
-        # popover.set_has_arrow(has_arrow=False)
         popover.set_offset(x_offset=-50, y_offset=0)
-        print(popover)
 
         vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=12)
         vbox.set_homogeneous(homogeneous=True)

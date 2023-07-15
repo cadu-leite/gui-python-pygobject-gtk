@@ -143,11 +143,14 @@ class ExampleApplication(Gtk.Application):
         self.quit()
 
     def create_action(self, name, callback, shortcuts=None):
-        action = Gio.SimpleAction.new(name, None)
+        action = Gio.SimpleAction.new(name=name, parameter_type=None)
         action.connect('activate', callback)
-        self.add_action(action)
+        self.add_action(action=action)
         if shortcuts:
-            self.set_accels_for_action(f'app.{name}', shortcuts)
+            self.set_accels_for_action(
+                detailed_action_name=f'app.{name}',
+                accels=shortcuts,
+            )
 
 
 if __name__ == '__main__':
