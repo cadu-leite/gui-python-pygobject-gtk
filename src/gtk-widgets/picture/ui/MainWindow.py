@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Python e GTK: PyGObject Gtk.Picture()."""
+"""Python e GTK: PyGObject Gtk.Picture() ui file."""
 
+import subprocess
 import sys
 from pathlib import Path
 
@@ -14,38 +15,42 @@ from gi.repository import Adw, Gio, Gtk
 Adw.init()
 
 BASE_DIR = Path(__file__).resolve().parent
-SRC_DIR = BASE_DIR.parent.parent
+SRC_DIR = BASE_DIR.parent.parent.parent
+APPLICATION_WINDOW = str(BASE_DIR.joinpath('MainWindow.ui'))
 PICTURE = str(SRC_DIR.joinpath('data', 'images', 'thunderstorm.jpg'))
 
+# Não utilizar no Gnome Builder. Configurar via meson.
+# [!] O Compilador Blueprint deve estar instalado [!].
+operational_system = sys.platform
+if operational_system == 'linux':
+    for data in BASE_DIR.iterdir():
+        if data.is_file() and data.suffix == '.blp':
+            subprocess.run(
+                args=['blueprint-compiler', 'compile', f'{data}', '--output',
+                      f'{BASE_DIR.joinpath(data.stem)}.ui'],
+            )
+elif operational_system == 'win32':
+    # MSYS2 + MINGW64 terminal.
+    BLUEPRINT_COMPILER = 'C:\\msys64\\mingw64\\bin\\blueprint-compiler'
+    for data in BASE_DIR.iterdir():
+        if data.is_file() and data.suffix == '.blp':
+            subprocess.run(
+                args=['python3', BLUEPRINT_COMPILER, 'compile', f'{data}', '--output',
+                      f'{BASE_DIR.joinpath(data.stem)}.ui'],
+            )
 
+
+@Gtk.Template(filename=APPLICATION_WINDOW)
 class ExampleWindow(Gtk.ApplicationWindow):
+    __gtype_name__ = 'ExampleWindow'
+
+    picture = Gtk.Template.Child('picture')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.set_title(title='Python e GTK: PyGObject Gtk.Picture()')
-        self.set_default_size(width=int(1366 / 2), height=int(768 / 2))
-        self.set_size_request(width=int(1366 / 2), height=int(768 / 2))
-
-        header_bar = Gtk.HeaderBar.new()
-        self.set_titlebar(titlebar=header_bar)
-
-        menu_button_model = Gio.Menu()
-        menu_button_model.append('Preferências', 'app.preferences')
-
-        menu_button = Gtk.MenuButton.new()
-        menu_button.set_icon_name(icon_name='open-menu-symbolic')
-        menu_button.set_menu_model(menu_model=menu_button_model)
-        header_bar.pack_end(child=menu_button)
-
-        vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=0)
-        self.set_child(child=vbox)
-
         gio_file = Gio.File.new_for_path(PICTURE)
-
-        picture = Gtk.Picture.new_for_file(file=gio_file)
-        picture.set_content_fit(content_fit=Gtk.ContentFit.FILL)
-        vbox.append(child=picture)
+        self.picture.set_file(file=gio_file)
 
 
 class ExampleApplication(Gtk.Application):
@@ -87,7 +92,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
-    import sys
 
     app = ExampleApplication()
     app.run(sys.argv)
