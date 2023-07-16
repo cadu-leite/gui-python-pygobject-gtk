@@ -18,6 +18,9 @@ BASE_DIR = Path(__file__).resolve().parent
 ROOT_DIR = BASE_DIR.parent.parent.parent
 APPLICATION_WINDOW = str(BASE_DIR.joinpath('MainWindow.ui'))
 
+CUSTOM_IMAGE = str(
+    ROOT_DIR.joinpath('data', 'icons', 'br.com.justcode.Exemplo.png')
+)
 
 # Não utilizar no Gnome Builder. Configurar via meson.
 # [!] O Compilador Blueprint deve estar instalado [!].
@@ -38,16 +41,13 @@ elif operational_system == 'win32':
                 args=['python3', BLUEPRINT_COMPILER, 'compile', f'{data}', '--output',
                       f'{BASE_DIR.joinpath(data.stem)}.ui'],
             )
-CUSTOM_IMAGE = str(
-    ROOT_DIR.joinpath('data', 'icons', 'br.com.justcode.Exemplo.png')
-)
 
 
 @Gtk.Template(filename=APPLICATION_WINDOW)
 class ExampleWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'ExampleWindow'
 
-    image = Gtk.Template.Child()
+    image = Gtk.Template.Child('image')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
