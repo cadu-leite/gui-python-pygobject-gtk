@@ -16,8 +16,18 @@ template $ExampleWindow: Gtk.ApplicationWindow {
 
   Gtk.Overlay overlay {
     [overlay]
-    Gtk.Button {
-      label: "Este botão está abaixo dos outros";
+    Gtk.Box {
+      orientation: vertical;
+      homogeneous: true;
+      margin-top: 12;
+      margin-end: 12;
+      margin-bottom: 12;
+      margin-start: 12;
+      spacing: 12;
+    
+      Gtk.Button {
+        label: "Este botão está abaixo dos outros";
+      }
     }
     
     [overlay]

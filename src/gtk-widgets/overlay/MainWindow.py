@@ -32,12 +32,20 @@ class ExampleWindow(Gtk.ApplicationWindow):
         header_bar.pack_end(child=menu_button)
 
         overlay = Gtk.Overlay.new()
-        self.set_child(child=overlay)
+        self.set_child(child=overlay) 
 
+        vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=12)
+        vbox.set_homogeneous(homogeneous=True)
+        vbox.set_margin_top(margin=12)
+        vbox.set_margin_end(margin=12)
+        vbox.set_margin_bottom(margin=12)
+        vbox.set_margin_start(margin=12)
+        overlay.set_child(child=vbox)
+        
         button = Gtk.Button.new_with_label(
             label='Este botão está abaixo dos outros',
         )
-        overlay.add_overlay(widget=button)
+        vbox.append(child=button)
 
         button_go_previous = Gtk.Button.new_from_icon_name(
             icon_name='go-previous',
