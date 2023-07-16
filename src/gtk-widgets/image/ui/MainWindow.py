@@ -15,11 +15,11 @@ from gi.repository import Adw, Gio, Gtk
 Adw.init()
 
 BASE_DIR = Path(__file__).resolve().parent
-ROOT_DIR = BASE_DIR.parent.parent.parent
+SRC_DIR = BASE_DIR.parent.parent.parent
 APPLICATION_WINDOW = str(BASE_DIR.joinpath('MainWindow.ui'))
 
 CUSTOM_IMAGE = str(
-    ROOT_DIR.joinpath('data', 'icons', 'br.com.justcode.Exemplo.png')
+    SRC_DIR.joinpath('data', 'icons', 'br.com.justcode.Exemplo.png')
 )
 
 # Não utilizar no Gnome Builder. Configurar via meson.
