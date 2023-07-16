@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Python e GTK: PyGObject Pango."""
+"""Python e GTK: PyGObject PyGObject Pango ui file."""
 
+import subprocess
 import sys
 from pathlib import Path
 
@@ -14,56 +15,49 @@ from gi.repository import Adw, Gio, Gtk
 Adw.init()
 
 BASE_DIR = Path(__file__).resolve().parent
-SRC_DIR = BASE_DIR.parent.parent
+SRC_DIR = BASE_DIR.parent.parent.parent
+APPLICATION_WINDOW = str(BASE_DIR.joinpath('MainWindow.ui'))
 TEMPLATE = SRC_DIR.joinpath('data', 'pango', 'template.txt')
 
 with open(TEMPLATE, mode='r', encoding='utf8') as f:
     text = f.read()
     f.close()
 
+# Não utilizar no Gnome Builder. Configurar via meson.
+# [!] O Compilador Blueprint deve estar instalado [!].
+operational_system = sys.platform
+if operational_system == 'linux':
+    for data in BASE_DIR.iterdir():
+        if data.is_file() and data.suffix == '.blp':
+            subprocess.run(
+                args=['blueprint-compiler', 'compile', f'{data}', '--output',
+                      f'{BASE_DIR.joinpath(data.stem)}.ui'],
+            )
+elif operational_system == 'win32':
+    # MSYS2 + MINGW64 terminal.
+    BLUEPRINT_COMPILER = 'C:\\msys64\\mingw64\\bin\\blueprint-compiler'
+    for data in BASE_DIR.iterdir():
+        if data.is_file() and data.suffix == '.blp':
+            subprocess.run(
+                args=['python3', BLUEPRINT_COMPILER, 'compile', f'{data}', '--output',
+                      f'{BASE_DIR.joinpath(data.stem)}.ui'],
+            )
 
+
+@Gtk.Template(filename=APPLICATION_WINDOW)
 class ExampleWindow(Gtk.ApplicationWindow):
+    __gtype_name__ = 'ExampleWindow'
+
+    text_buffer = Gtk.Template.Child('text_buffer')
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.set_title(title='Python e GTK: PyGObject Pango.')
-        self.set_default_size(width=int(1366 / 2), height=int(768 / 2))
-        self.set_size_request(width=int(1366 / 2), height=int(768 / 2))
-
-        header_bar = Gtk.HeaderBar.new()
-        self.set_titlebar(titlebar=header_bar)
-
-        menu_button_model = Gio.Menu()
-        menu_button_model.append('Preferências', 'app.preferences')
-
-        menu_button = Gtk.MenuButton.new()
-        menu_button.set_icon_name(icon_name='open-menu-symbolic')
-        menu_button.set_menu_model(menu_model=menu_button_model)
-        header_bar.pack_end(child=menu_button)
-
-        vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=12)
-        vbox.set_homogeneous(homogeneous=True)
-        vbox.set_margin_top(margin=12)
-        vbox.set_margin_end(margin=12)
-        vbox.set_margin_bottom(margin=12)
-        vbox.set_margin_start(margin=12)
-        self.set_child(child=vbox)
-
-        scrolled_window = Gtk.ScrolledWindow.new()
-        vbox.append(child=scrolled_window)
-
-        # Buffer de texto.
-        text_buffer = Gtk.TextBuffer.new()
-        # Adicionando texto renderizado ao Gtk.TextView.
-        text_buffer.insert_markup(
-            iter=text_buffer.get_end_iter(),
+        self.text_buffer.insert_markup(
+            iter=self.text_buffer.get_end_iter(),
             markup=text,
             len=-1,
         )
-
-        text_view = Gtk.TextView.new_with_buffer(buffer=text_buffer)
-        scrolled_window.set_child(child=text_view)
 
 
 class ExampleApplication(Gtk.Application):
@@ -105,7 +99,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
-    import sys
 
     app = ExampleApplication()
     app.run(sys.argv)
