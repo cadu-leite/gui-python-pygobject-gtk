@@ -85,6 +85,6 @@ def save_data(widget: Gtk.Widget):
 
 
 if __name__ == '__main__':
-    widget = Gtk.ColorDialog()
+    widget = Gtk.SearchBar()
     save_data(widget=widget)
     print('[!] Concluido [!]')

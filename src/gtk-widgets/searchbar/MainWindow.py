@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Python e GTK: PyGObject Gtk.SearchBar()."""
+
 import gi
 
 gi.require_version(namespace='Gtk', version='4.0')
@@ -42,12 +43,15 @@ class ExampleWindow(Gtk.ApplicationWindow):
         )
         header_bar.pack_start(child=button_show_searchbar)
 
+        overlay = Gtk.Overlay.new()
+        self.set_child(child=overlay)
+
         vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=12)
         vbox.set_margin_top(margin=12)
         vbox.set_margin_end(margin=12)
         vbox.set_margin_bottom(margin=12)
         vbox.set_margin_start(margin=12)
-        self.set_child(child=vbox)
+        overlay.set_child(child=vbox)
 
         entry = Gtk.Entry.new()
         entry.set_placeholder_text(text='GtkSearchBar')
@@ -58,22 +62,30 @@ class ExampleWindow(Gtk.ApplicationWindow):
         entry.connect('activate', self.on_key_enter_pressed)
         entry.connect('icon-press', self.on_icon_pressed)
 
-        self.searchbar = Gtk.SearchBar.new()
-        self.searchbar.set_show_close_button(visible=True)
-        self.searchbar.set_child(child=entry)
-        self.searchbar.add_css_class(css_class='inline')
-        vbox.append(child=self.searchbar)
+        self.search_bar = Gtk.SearchBar.new()
+        # self.searchbar.set_show_close_button(visible=True)
+        self.search_bar.set_child(child=entry)
+        self.search_bar.add_css_class(css_class='inline')
+        self.search_bar.set_halign(align=Gtk.Align.START)
+        self.search_bar.set_valign(align=Gtk.Align.START)
+        overlay.add_overlay(widget=self.search_bar)
 
-    def on_button_show_searchbar_clicked(self, widget):
-        if self.searchbar.get_search_mode():
-            self.searchbar.set_search_mode(search_mode=False)
+        label = Gtk.Label.new(str='Clique no ícone de pesquisa.')
+        label.set_vexpand(expand=True)
+        vbox.append(child=label)
+
+    def on_button_show_searchbar_clicked(self, toggle_button):
+        if self.search_bar.get_search_mode():
+            self.search_bar.set_search_mode(search_mode=False)
         else:
-            self.searchbar.set_search_mode(search_mode=True)
+            self.search_bar.set_search_mode(search_mode=True)
 
-    def on_icon_pressed(self, widget, EntryIconPosition):
+    
+    def on_icon_pressed(self, entry, entry_icon_position):
         print('Ícone pressionado.')
 
-    def on_key_enter_pressed(self, widget):
+    
+    def on_key_enter_pressed(self, entry):
         print('Enter pressionando.')
 
 

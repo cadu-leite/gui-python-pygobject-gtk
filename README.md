@@ -88,14 +88,21 @@ Obrigado por sua doação é através dela que consigo manter este conteúdo �
 ### GNOME
 
 - [Site oficial](https://www.gnome.org/).
-- [GNOME Human Interface Guidelines (HIG)](https://wiki.gnome.org/Design/HIG).
 - [Blog](https://blogs.gnome.org/).
+- [GNOME Human Interface Guidelines (HIG)](https://wiki.gnome.org/Design/HIG).
+
+
 
 ### Desenvolvimento
 
 - [GNOME Builder](https://apps.gnome.org/pt-BR/app/org.gnome.Builder/).
 - [Workbench](https://apps.gnome.org/pt-BR/app/re.sonny.Workbench/).
 - [Cambalache](https://flathub.org/pt-BR/apps/ar.xjuan.Cambalache).
+- [Icon Library](https://flathub.org/apps/details/org.gnome.design.IconLibrary).
+- [Typography](https://flathub.org/apps/details/org.gnome.design.Typography).
+- [App Icon Preview](https://flathub.org/apps/details/org.gnome.design.AppIconPreview).
+- [Symbolic Preview](https://flathub.org/apps/details/org.gnome.design.SymbolicPreview).
+- [Color Palette](https://flathub.org/apps/details/org.gnome.design.Palette).
 
 ### Softwares
 
