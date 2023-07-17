@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Python e GTK: PyGObject Gtk.PrintOperation()."""
+"""Python e GTK: PyGObject PyGObject Gtk.PrintOperation ui file."""
 
+import subprocess
+import sys
 from pathlib import Path
 
 import gi
@@ -13,6 +15,8 @@ from gi.repository import Adw, Gio, Gtk, Pango, PangoCairo
 Adw.init()
 
 BASE_DIR = Path(__file__).resolve().parent
+SRC_DIR = BASE_DIR.parent.parent.parent
+APPLICATION_WINDOW = str(BASE_DIR.joinpath('MainWindow.ui'))
 PDF_FILE = str(BASE_DIR.joinpath('nome-do-arquivo.pdf'))
 
 TEXT = """<span size="xx-large">Lorem</span>
@@ -21,35 +25,37 @@ Lorem <b>ipsum</b> <span foreground="red">dolor</span> <big>sit</big> amet,
 <span background="green">eiusmod</span> tempor incididunt 
 <small>ut</small> <tt>labore</tt> et dolore magna aliqua.\n"""
 
+# Não utilizar no Gnome Builder. Configurar via meson.
+# [!] O Compilador Blueprint deve estar instalado [!].
+operational_system = sys.platform
+if operational_system == 'linux':
+    for data in BASE_DIR.iterdir():
+        if data.is_file() and data.suffix == '.blp':
+            subprocess.run(
+                args=['blueprint-compiler', 'compile', f'{data}', '--output',
+                      f'{BASE_DIR.joinpath(data.stem)}.ui'],
+            )
+elif operational_system == 'win32':
+    # MSYS2 + MINGW64 terminal.
+    BLUEPRINT_COMPILER = 'C:\\msys64\\mingw64\\bin\\blueprint-compiler'
+    for data in BASE_DIR.iterdir():
+        if data.is_file() and data.suffix == '.blp':
+            subprocess.run(
+                args=['python3', BLUEPRINT_COMPILER, 'compile', f'{data}', '--output',
+                      f'{BASE_DIR.joinpath(data.stem)}.ui'],
+            )
 
+
+@Gtk.Template(filename=APPLICATION_WINDOW)
 class ExampleWindow(Gtk.ApplicationWindow):
+    __gtype_name__ = 'ExampleWindow'
 
     pango_layout = None
 
+    text_buffer = Gtk.Template.Child('text_buffer')
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
-        self.set_title(title='Python e GTK: PyGObject Gtk.PrintOperation().')
-        self.set_default_size(width=int(1366 / 2), height=int(768 / 2))
-        self.set_size_request(width=int(1366 / 2), height=int(768 / 2))
-
-        header_bar = Gtk.HeaderBar.new()
-        self.set_titlebar(titlebar=header_bar)
-
-        menu_button_model = Gio.Menu()
-        menu_button_model.append('Preferências', 'app.preferences')
-
-        menu_button = Gtk.MenuButton.new()
-        menu_button.set_icon_name(icon_name='open-menu-symbolic')
-        menu_button.set_menu_model(menu_model=menu_button_model)
-        header_bar.pack_end(child=menu_button)
-
-        vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=12)
-        vbox.set_margin_top(margin=12)
-        vbox.set_margin_end(margin=12)
-        vbox.set_margin_bottom(margin=12)
-        vbox.set_margin_start(margin=12)
-        self.set_child(child=vbox)
 
         # Variável auxiliar com as configurações do papel.
         self.page_setup = self._page_setup()
@@ -57,9 +63,6 @@ class ExampleWindow(Gtk.ApplicationWindow):
 
         # Variável para o dialogo de configuração do papel:
         self.print_settings = Gtk.PrintSettings.new()
-
-        # Buffer de texto.
-        self.text_buffer = Gtk.TextBuffer.new()
 
         # Adicionando texto renderizado ao Gtk.TextView.
         text_buffer_iter = self.text_buffer.get_end_iter()
@@ -69,43 +72,7 @@ class ExampleWindow(Gtk.ApplicationWindow):
             len=-1,
         )
 
-        text_view = Gtk.TextView.new_with_buffer(buffer=self.text_buffer)
-        text_view.set_vexpand(expand=True)
-        vbox.append(child=text_view)
-
-        hbox = Gtk.Box.new(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
-        hbox.set_halign(align=Gtk.Align.CENTER)
-        vbox.append(child=hbox)
-
-        button_print_dialog = Gtk.Button.new_with_label('Imprimir')
-        button_print_dialog.connect(
-            'clicked',
-            self.on_button_open_print_dialog_clicked,
-        )
-        hbox.append(child=button_print_dialog)
-
-        button_open_preview = Gtk.Button.new_with_label('Visualizar')
-        button_open_preview.connect(
-            'clicked',
-            self.on_button_open_preview_clicked,
-        )
-        hbox.append(child=button_open_preview)
-
-        button_page_setup_dialog = Gtk.Button.new_with_label(
-            'Configurar página')
-        button_page_setup_dialog.connect(
-            'clicked',
-            self.on_button_open_page_setup_dialog_clicked,
-        )
-        hbox.append(child=button_page_setup_dialog)
-
-        button_export_pdf = Gtk.Button.new_with_label('Exportar para PDF')
-        button_export_pdf.connect(
-            'clicked',
-            self.on_button_export_to_pdf_clicked,
-        )
-        hbox.append(child=button_export_pdf)
-
+    @Gtk.Template.Callback()
     def on_begin_print(self, print_operation, print_context):
         self.pango_layout = print_context.create_pango_layout()
         self.pango_layout.set_markup(text=TEXT, length=-1)
@@ -113,11 +80,13 @@ class ExampleWindow(Gtk.ApplicationWindow):
             desc=Pango.FontDescription('Arial 12'),
         )
 
+    @Gtk.Template.Callback()
     def on_draw_page(self, print_operation, print_context, page_nr):
         cairo_context = print_context.get_cairo_context()
         cairo_context.set_source_rgb(0, 0, 0)
         PangoCairo.show_layout(cr=cairo_context, layout=self.pango_layout)
 
+    @Gtk.Template.Callback()
     def on_button_open_print_dialog_clicked(self, widget):
         print_operation = Gtk.PrintOperation.new()
         print_operation.set_n_pages(n_pages=1)
@@ -133,6 +102,7 @@ class ExampleWindow(Gtk.ApplicationWindow):
         )
         self._check_print_dialog_response(response=response)
 
+    @Gtk.Template.Callback()
     def on_button_open_preview_clicked(self, widget):
         print_operation = Gtk.PrintOperation.new()
         print_operation.set_n_pages(n_pages=1)
@@ -146,6 +116,7 @@ class ExampleWindow(Gtk.ApplicationWindow):
             action=Gtk.PrintOperationAction.PREVIEW, parent=self)
         self._check_print_dialog_response(response=response)
 
+    @Gtk.Template.Callback()
     def on_button_open_page_setup_dialog_clicked(self, widget):
         print(self.page_setup.get_page_width(unit=Gtk.Unit.MM))
         self.page_setup = Gtk.print_run_page_setup_dialog(
@@ -155,6 +126,7 @@ class ExampleWindow(Gtk.ApplicationWindow):
         )
         print(self.page_setup.get_page_width(unit=Gtk.Unit.MM))
 
+    @Gtk.Template.Callback()
     def on_button_export_to_pdf_clicked(self, widget):
         print_operation = Gtk.PrintOperation.new()
         print_operation.set_n_pages(n_pages=1)
@@ -236,7 +208,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
-    import sys
 
     app = ExampleApplication()
     app.run(sys.argv)

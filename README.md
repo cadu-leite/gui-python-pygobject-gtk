@@ -278,18 +278,6 @@ _gtk_css_corner_value_get_y: assertion 'corner->class == &GTK_CSS_VALUE_CORNER' 
 
 ![Gtk.Picture](./docs/images/gtk-widgets/picture.png)
 
-#### Gtk.Popover
-
-- [Gtk.Popover](./src/gtk-widgets/popover).
-
-![Gtk.Popover](./docs/images/gtk-widgets/popover.png)
-
-#### Gtk.PopoverMenu
-
-- [Gtk.PopoverMenu](./src/gtk-widgets/popover-menu).
-
-![Gtk.PopoverMenu](./docs/images/gtk-widgets/popover-menu.png)
-
 #### Gtk.PrintOperation
 
 - [Gtk.PrintOperation](./src/gtk-widgets/print-operation).
