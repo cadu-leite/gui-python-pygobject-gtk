@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """Python e GTK: PyGObject Gtk.Video()."""
 
-import subprocess
-import sys
 from pathlib import Path
 
 import gi
@@ -15,9 +13,9 @@ from gi.repository import Adw, Gio, Gtk
 Adw.init()
 
 BASE_DIR = Path(__file__).resolve().parent
-ROOT_DIR = BASE_DIR.parent.parent
+SRC_DIR = BASE_DIR.parent.parent
 VIDEO = str(
-    ROOT_DIR.joinpath('data', 'videos',
+    SRC_DIR.joinpath('data', 'videos',
                       'beautiful-sunset-view-nature-background.mp4')
 )
 
