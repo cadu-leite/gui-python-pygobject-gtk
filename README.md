@@ -253,6 +253,12 @@ Obrigado por sua doação é através dela que consigo manter este conteúdo �
 
 ![Gtk.ListBox](./docs/images/gtk-widgets/list-box.png)
 
+#### Gtk.ListView
+
+- [Gtk.ListView](./src/gtk-widgets/list-view).
+
+![Gtk.ListView](./docs/images/gtk-widgets/list-view.png)
+
 #### Gtk.MenuButton
 
 - [Gtk.MenuButton](./src/gtk-widgets/menu-button).
@@ -332,24 +338,6 @@ _gtk_css_corner_value_get_y: assertion 'corner->class == &GTK_CSS_VALUE_CORNER' 
 - [Translation (gettext)](./src/gtk-widgets/translation-gettext).
 
 ![Translation (gettext)](./docs/images/gtk-widgets/translation-gettext.png)
-
-#### Gtk.TreeView (editable)
-
-- [Gtk.TreeView (editable)](./src/gtk-widgets/tree-view-editable).
-
-![Gtk.TreeView (editable)](./docs/images/gtk-widgets/tree-view-editable.png)
-
-#### Gtk.TreeView (filter)
-
-- [Gtk.TreeView (filter)](./src/gtk-widgets/tree-view-filter).
-
-![Gtk.TreeView (filter)](./docs/images/gtk-widgets/tree-view-filter.png)
-
-#### Gtk.TreeView (sort)
-
-- [Gtk.TreeView (sort)](./src/gtk-widgets/tree-view-sort).
-
-![Gtk.TreeView (sort)](./docs/images/gtk-widgets/tree-view-sort.png)
 
 #### Gtk.Video
 
@@ -439,4 +427,5 @@ _gtk_css_corner_value_get_y: assertion 'corner->class == &GTK_CSS_VALUE_CORNER' 
 - `Gtk.FontButton`: Utilizar `Gtk.FontDialogButton`.
 - `Gtk.InfoBar`: Utilizar `Gtk.Revealer` com um `Gtk.Box`.
 - `Gtk.Dialog`: Utilizar `Gtk.Window`.
-- `Gtk.FileChooserDialog`: Utilizar `GtkFileDialog`
+- `Gtk.FileChooserDialog`: Utilizar `Gtk.FileDialog`.
+- `Gtk.TreeView`: Utilizar `Gtk.ListView` para listas e `Gtk.ColumnView` para listas tabulares.

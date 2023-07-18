@@ -15,8 +15,8 @@ class NewWindow(Gtk.Window):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.set_modal(modal=True)
         self.set_title(title='Python e GTK: PyGObject Gtk.Window()')
+        self.set_modal(modal=True)
         self.set_default_size(width=int(1366 / 3), height=int(768 / 3))
         self.set_size_request(width=int(1366 / 3), height=int(768 / 3))
 
@@ -25,7 +25,6 @@ class NewWindow(Gtk.Window):
         vbox.set_margin_end(margin=12)
         vbox.set_margin_bottom(margin=12)
         vbox.set_margin_start(margin=12)
-        vbox.set_valign(Gtk.Align.CENTER)
         self.set_child(child=vbox)
 
         # Widgets.
@@ -67,23 +66,13 @@ class ExampleWindow(Gtk.ApplicationWindow):
         vbox.set_margin_start(margin=12)
         self.set_child(child=vbox)
 
-        # Widgets.
-        button = Gtk.Button.new_with_label('Abrir janela')
+        button = Gtk.Button.new_with_label(label='Abrir janela')
         button.connect('clicked', self.on_button_clicked)
         vbox.append(child=button)
 
-    def on_button_clicked(self, widget):
-        window = Gtk.Window.new()
-        window.set_transient_for(parent=self)
-        window.set_modal(modal=True)
-        window.set_title(title='Python e GTK: PyGObject Gtk.Window()')
-        window.set_default_size(width=int(1366 / 3), height=int(768 / 3))
-        window.set_size_request(width=int(1366 / 3), height=int(768 / 3))
-        window.present()
-
-        # # Usando uma classe (recomendado).
-        # new_window = NewWindow(transient_for=self)
-        # new_window.present()
+    def on_button_clicked(self, button):
+        new_window = NewWindow(transient_for=self)
+        new_window.present()
 
 
 class ExampleApplication(Gtk.Application):
