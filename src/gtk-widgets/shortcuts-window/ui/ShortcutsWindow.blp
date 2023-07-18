@@ -1,23 +1,23 @@
 using Gtk 4.0;
 
-template ShortcutsWindow: ShortcutsWindow {
+template $ShortcutsWindow: Gtk.ShortcutsWindow {
   modal: true;
 
-  ShortcutsSection {
+  Gtk.ShortcutsSection {
     section-name: "shortcuts";
     max-height: 10;
 
-    ShortcutsGroup {
-      title: C_("shortcut window", "Geral");
+    Gtk.ShortcutsGroup {
+      title: C_("ShortcutsWindow", "Geral");
 
-      ShortcutsShortcut {
-        title: C_("shortcut window", "Exibir atalhos");
+      Gtk.ShortcutsShortcut {
+        title: C_("ShortcutsWindow", "Exibir atalhos");
         action-name: "app.shortcuts-window";
         accelerator: "<primary>&1";
       }
 
       ShortcutsShortcut {
-        title: C_("shortcut window", "Sair");
+        title: C_("ShortcutsWindow", "Sair");
         action-name: "app.quit";
         accelerator: "<primary>&q";
       }

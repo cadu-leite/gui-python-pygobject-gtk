@@ -16,7 +16,7 @@ Adw.init()
 
 BASE_DIR = Path(__file__).resolve().parent
 APPLICATION_WINDOW = str(BASE_DIR.joinpath('MainWindow.ui'))
-ShortcutsWindow = str(BASE_DIR.joinpath('ShortcutsWindow.ui'))
+SHORTCUTS_WINDOW = str(BASE_DIR.joinpath('ShortcutsWindow.ui'))
 
 # Não utilizar no Gnome Builder. Configurar via meson.
 # [!] O Compilador Blueprint deve estar instalado [!].
@@ -39,7 +39,7 @@ elif operational_system == 'win32':
             )
 
 
-@Gtk.Template(filename=ShortcutsWindow)
+@Gtk.Template(filename=SHORTCUTS_WINDOW)
 class ShortcutsWindow(Gtk.ShortcutsWindow):
     __gtype_name__ = 'ShortcutsWindow'
 
@@ -63,7 +63,10 @@ class ExampleApplication(Gtk.Application):
 
         self.create_action('quit', self.exit_app, ['<primary>q'])
         self.create_action('preferences', self.on_preferences_action)
-        self.create_action('shortcuts-window', self.on_shortcuts_window_action, ['<primary>1'])
+        self.create_action(
+            'shortcuts-window',
+            self.on_shortcuts_window_action, ['<primary>1'],
+        )
 
     def do_activate(self):
         win = self.props.active_window
@@ -81,7 +84,8 @@ class ExampleApplication(Gtk.Application):
         print('Ação app.preferences foi ativa.')
 
     def on_shortcuts_window_action(self, action, param):
-        shortcuts_window = ShortcutsWindow(transient_for=self.get_active_window())
+        shortcuts_window = ShortcutsWindow(
+            transient_for=self.get_active_window())
         shortcuts_window.present()
 
     def exit_app(self, action, param):
