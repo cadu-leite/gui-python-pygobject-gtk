@@ -358,7 +358,13 @@ _gtk_css_corner_value_get_y: assertion 'corner->class == &GTK_CSS_VALUE_CORNER' 
 ### Widgets
 
 - [aboutwindow](src/gtk-libadwaita-widgets/aboutwindow).
-- [action-row](src/gtk-libadwaita-widgets/action-row).
+
+#### Adw.ActionRow
+
+- [Adw.ActionRow](./src/libadwaita-widgets/action-row).
+
+![Adw.ActionRow](./docs/images/libadwaita-widgets/action-row.png)
+
 - [application](src/gtk-libadwaita-widgets/application).
 - [avatar](src/gtk-libadwaita-widgets/avatar).
 - [button-content](src/gtk-libadwaita-widgets/button-content).

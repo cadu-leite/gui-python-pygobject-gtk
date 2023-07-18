@@ -2,12 +2,12 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="ExampleWindow" parent="AdwApplicationWindow">
-    <property name="title">Python e GTK: PyGObject Gtk.ListBox() Adw.ActionRow() ui file</property>
+    <property name="title">Python e GTK: PyGObject Adw.ActionRow() ui file</property>
     <property name="default-width">683</property>
     <property name="default-height">384</property>
     <child>
       <object class="GtkBox">
-        <property name="orientation">vertical</property>
+        <property name="orientation">1</property>
         <property name="spacing">12</property>
         <child type="titlebar">
           <object class="GtkHeaderBar" id="header_bar">
@@ -21,7 +21,7 @@
         </child>
         <child>
           <object class="GtkListBox">
-            <property name="selection-mode">none</property>
+            <property name="selection-mode">0</property>
             <property name="margin-end">12</property>
             <property name="margin-start">12</property>
             <style>
@@ -38,7 +38,7 @@
                 </child>
                 <child type="suffix">
                   <object class="GtkSwitch">
-                    <property name="valign">center</property>
+                    <property name="valign">3</property>
                     <signal name="notify::active" handler="on_switch_button_clicked"/>
                   </object>
                 </child>
@@ -55,7 +55,7 @@
                 </child>
                 <child type="suffix">
                   <object class="GtkSwitch">
-                    <property name="valign">center</property>
+                    <property name="valign">3</property>
                     <signal name="notify::active" handler="on_switch_button_clicked"/>
                   </object>
                 </child>
@@ -72,7 +72,7 @@
                 </child>
                 <child type="suffix">
                   <object class="GtkSwitch">
-                    <property name="valign">center</property>
+                    <property name="valign">3</property>
                     <signal name="notify::active" handler="on_switch_button_clicked"/>
                   </object>
                 </child>
@@ -89,7 +89,7 @@
                 </child>
                 <child type="suffix">
                   <object class="GtkSwitch">
-                    <property name="valign">center</property>
+                    <property name="valign">3</property>
                     <signal name="notify::active" handler="on_switch_button_clicked"/>
                   </object>
                 </child>
@@ -106,7 +106,7 @@
                 </child>
                 <child type="suffix">
                   <object class="GtkSwitch">
-                    <property name="valign">center</property>
+                    <property name="valign">3</property>
                     <signal name="notify::active" handler="on_switch_button_clicked"/>
                   </object>
                 </child>
