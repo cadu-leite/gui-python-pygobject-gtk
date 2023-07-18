@@ -30,12 +30,10 @@ class NewWindow(Gtk.Window):
 
         # Widgets.
         button = Gtk.Button.new_with_label('Fechar janela')
-        button.connect('clicked', self.on_window_button_close_clicked)
+        button.connect('clicked', self.on_button_close_clicked)
         vbox.append(child=button)
 
-        self.show()
-
-    def on_window_button_close_clicked(self, widget):
+    def on_button_close_clicked(self, button):
         self.destroy()
 
 
@@ -67,7 +65,6 @@ class ExampleWindow(Gtk.ApplicationWindow):
         vbox.set_margin_end(margin=12)
         vbox.set_margin_bottom(margin=12)
         vbox.set_margin_start(margin=12)
-        vbox.set_valign(Gtk.Align.CENTER)
         self.set_child(child=vbox)
 
         # Widgets.
@@ -76,16 +73,17 @@ class ExampleWindow(Gtk.ApplicationWindow):
         vbox.append(child=button)
 
     def on_button_clicked(self, widget):
-        # window = Gtk.Window.new()
-        # window.set_transient_for(parent=self)
-        # window.set_modal(modal=True)
-        # window.set_title(title='Python e GTK: PyGObject Gtk.Window()')
-        # window.set_default_size(width=int(1366 / 3), height=int(768 / 3))
-        # window.set_size_request(width=int(1366 / 3), height=int(768 / 3))
-        # window.show()
+        window = Gtk.Window.new()
+        window.set_transient_for(parent=self)
+        window.set_modal(modal=True)
+        window.set_title(title='Python e GTK: PyGObject Gtk.Window()')
+        window.set_default_size(width=int(1366 / 3), height=int(768 / 3))
+        window.set_size_request(width=int(1366 / 3), height=int(768 / 3))
+        window.present()
 
-        # Usando uma classe (recomendado).
-        NewWindow(transient_for=self)
+        # # Usando uma classe (recomendado).
+        # new_window = NewWindow(transient_for=self)
+        # new_window.present()
 
 
 class ExampleApplication(Gtk.Application):
