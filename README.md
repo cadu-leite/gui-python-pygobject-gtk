@@ -291,6 +291,12 @@ _gtk_css_corner_value_get_y: assertion 'corner->class == &GTK_CSS_VALUE_CORNER' 
 
 ![Gtk.PrintOperation](./docs/images/gtk-widgets/print-operation.png)
 
+#### Gtk.SearchBar
+
+- [Gtk.SearchBar](./src/gtk-widgets/search-bar).
+
+![Gtk.SearchBar](./docs/images/gtk-widgets/search-bar.png)
+
 #### Gtk.ShortcutsWindow
 
 - [Gtk.ShortcutsWindow](./src/gtk-widgets/shortcuts-window).

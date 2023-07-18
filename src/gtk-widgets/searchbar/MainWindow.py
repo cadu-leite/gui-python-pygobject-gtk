@@ -31,10 +31,6 @@ class ExampleWindow(Gtk.ApplicationWindow):
         menu_button.set_menu_model(menu_model=menu_button_model)
         header_bar.pack_end(child=menu_button)
 
-        header_bar = Gtk.HeaderBar.new()
-        header_bar.set_show_title_buttons(setting=True)
-        self.set_titlebar(titlebar=header_bar)
-
         button_show_searchbar = Gtk.ToggleButton.new()
         button_show_searchbar.set_icon_name(icon_name='system-search-symbolic')
         button_show_searchbar.connect(
@@ -80,11 +76,9 @@ class ExampleWindow(Gtk.ApplicationWindow):
         else:
             self.search_bar.set_search_mode(search_mode=True)
 
-    
     def on_icon_pressed(self, entry, entry_icon_position):
         print('Ícone pressionado.')
 
-    
     def on_key_enter_pressed(self, entry):
         print('Enter pressionando.')
 
