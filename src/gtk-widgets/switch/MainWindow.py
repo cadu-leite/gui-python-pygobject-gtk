@@ -34,19 +34,23 @@ class ExampleWindow(Gtk.ApplicationWindow):
         menu_button.set_menu_model(menu_model=menu_button_model)
         header_bar.pack_end(child=menu_button)
 
-        grid = Gtk.Grid.new()
-        grid.set_margin_top(margin=12)
-        grid.set_margin_end(margin=12)
-        grid.set_margin_bottom(margin=12)
-        grid.set_margin_start(margin=12)
-        self.set_child(child=grid)
+        header_bar = Gtk.HeaderBar.new()
+        self.set_titlebar(titlebar=header_bar)
+
+        vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=12)
+        vbox.set_margin_top(margin=12)
+        vbox.set_margin_end(margin=12)
+        vbox.set_margin_bottom(margin=12)
+        vbox.set_margin_start(margin=12)
+        self.set_child(child=vbox)
 
         switch = Gtk.Switch.new()
+        switch.set_halign(align=Gtk.Align.START)
         switch.connect('notify::active', self.on_switch_button_clicked)
-        grid.attach(child=switch, column=0, row=0, width=1, height=1)
+        vbox.append(child=switch)
 
-    def on_switch_button_clicked(self, widget, g_param):
-        if widget.get_active():
+    def on_switch_button_clicked(self, switch, g_param):
+        if switch.get_active():
             print('Botão marcado')
         else:
             print('Botão desmarcado')
