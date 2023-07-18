@@ -46,7 +46,7 @@ class ExampleWindow(Gtk.ApplicationWindow):
         vbox.append(child=self.entry)
 
         self.label = Gtk.Label.new(str='Este texto será alterado!')
-        self.label.set_vexpand(True)
+        self.label.set_vexpand(expand=True)
         vbox.append(child=self.label)
 
         button = Gtk.Button.new_with_label(label='Clique Aqui')

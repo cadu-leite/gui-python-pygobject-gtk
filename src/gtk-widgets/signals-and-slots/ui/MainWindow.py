@@ -79,6 +79,8 @@ class ExampleApplication(Gtk.Application):
         Gtk.Application.do_shutdown(self)
 
     def on_preferences_action(self, action, param):
+        print(action)
+        print(param)
         print('Ação app.preferences foi ativa.')
 
     def exit_app(self, action, param):
