@@ -389,7 +389,12 @@ _gtk_css_corner_value_get_y: assertion 'corner->class == &GTK_CSS_VALUE_CORNER' 
 
 ### Classe de estilo
 
-- [background](src/gtk-libadwaita-style-class/background).
+#### Adw style class background
+
+- [Adw style class background](./src/libadwaita-style-class/background).
+
+![Adw style class background](./docs/images/libadwaita-style-class/background.png)
+
 - [body](src/gtk-libadwaita-style-class/body).
 - [boxed-list](src/gtk-libadwaita-style-class/boxed-list).
 - [caption](src/gtk-libadwaita-style-class/caption).
