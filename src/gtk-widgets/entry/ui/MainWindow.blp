@@ -26,7 +26,7 @@ template $ExampleWindow: Gtk.ApplicationWindow {
       label: "Digite algo e clique no ícone ou pressione Enter:";
     }
 
-    Entry {
+    Gtk.Entry {
       // primary-icon-name: "system-search-symbolic";
       secondary-icon-name: "system-search-symbolic";
       activate => $on_key_enter_pressed();

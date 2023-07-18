@@ -23,7 +23,7 @@ template $ExampleWindow: Gtk.ApplicationWindow {
     margin-start: 12;
     spacing: 12;
 
-    ListBox {
+    Gtk.ListBox {
       selection-mode: none;
         styles [
           "boxed-list",
@@ -93,7 +93,7 @@ template $ExampleWindow: Gtk.ApplicationWindow {
       }
     }
 
-    ListBox {
+    Gtk.ListBox {
       selection-mode: single;
       show-separators: true;
       vexpand: true;

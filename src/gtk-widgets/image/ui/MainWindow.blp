@@ -26,12 +26,11 @@ template $ExampleWindow: Gtk.ApplicationWindow {
     Gtk.Button {
       label: "Botão 02";
       child: 
-      Image image {
-        styles [
-          "lowres-icon",
-        ]
-      }
-
+        Gtk.Image image {
+          styles [
+            "lowres-icon",
+          ]
+        }
       ;
     }
   }
