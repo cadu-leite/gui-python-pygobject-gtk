@@ -45,25 +45,17 @@ class ExampleWindow(Gtk.ApplicationWindow):
         self.set_child(child=vbox)
 
         stack = Gtk.Stack.new()
-        # Definindo o efeito de transição.
-        stack.set_transition_type(
-            transition=Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
-        )
-        # Definindo o tempo da transição (1000 = 1 segundo).
-        stack.set_transition_duration(duration=1000)
 
         page1 = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        # Adicionando o Box Layout 1 no Stack Layout.
-        stack.add_titled(child=page1, name='pagina1', title='Página 1')
+        stack.add_titled(child=page1, name='page1', title='Página 1')
         vbox.append(child=stack)
 
-        # Utilizando um laço de repetição para criar alguns botões.
         for n in range(5):
             botao = Gtk.Button.new_with_label(label=f'Botão {n}')
             page1.append(child=botao)
 
         page2 = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        stack.add_titled(child=page2, name='pagina2', title='Página 2')
+        stack.add_titled(child=page2, name='page2', title='Página 2')
 
         for n in range(5):
             label = Gtk.Label.new(str=f'Linha {n}')

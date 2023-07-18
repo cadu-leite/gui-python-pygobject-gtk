@@ -6,9 +6,11 @@ template $ExampleWindow: Gtk.ApplicationWindow {
   default-height: 384;
 
   [titlebar]
-  HeaderBar {
-    title-widget: stackswitcher;
-
+  Gtk.HeaderBar {
+    title-widget: Gtk.StackSwitcher {
+      stack: stack;
+    };
+  
     [end]
     Gtk.MenuButton {
       icon-name: "open-menu-symbolic";
@@ -25,44 +27,50 @@ template $ExampleWindow: Gtk.ApplicationWindow {
     margin-start: 12;
     spacing: 12;
 
-    Stack stack {
+    Gtk.Stack stack {
       vexpand: true;
 
-      StackPage {
-        name: "page01";
-        title: _("Página 01");
-        child: 
-        Gtk.Box {
-          orientation: vertical;
-
-          Gtk.Label {
-            label: "Página 01";
+      Gtk.StackPage {
+        name: "page1";
+        title: "Página 01";
+        child:
+          Gtk.Box {
+            orientation: vertical;
+            spacing: 6;
+            Gtk.Button {
+              label: "Botão 01";
+            }
+            Gtk.Button {
+              label: "Botão 02";
+            }
+            Gtk.Button {
+              label: "Botão 03";
+            }
           }
-        }
-
         ;
       }
 
-      StackPage page02 {
-        name: "page02";
-        title: _("Página 02");
-        child: 
-        Gtk.Box {
-          orientation: vertical;
-
-          Gtk.Label {
-            label: "Página 02";
+      Gtk.StackPage {
+        name: "page2";
+        title: "Página 02";
+        child:
+          Gtk.Box {
+            orientation: vertical;
+            spacing: 6;
+            Gtk.Label {
+              label: "Linha 01";
+            }
+            Gtk.Label {
+              label: "Linha 02";
+            }
+            Gtk.Label {
+              label: "Linha 03";
+            }
           }
-        }
-
         ;
       }
-    }
+    }  
   }
-}
-
-StackSwitcher stackswitcher {
-  stack: stack;
 }
 
 menu primary_menu {
