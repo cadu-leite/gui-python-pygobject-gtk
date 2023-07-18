@@ -28,7 +28,10 @@ class ExampleWindow(Adw.ApplicationWindow):
         mbox.append(child=header_bar)
 
         menu_button_model = Gio.Menu()
-        menu_button_model.append('Preferências', 'app.preferences')
+        menu_button_model.append(
+            label='Preferências',
+            detailed_action='app.preferences',
+        )
 
         menu_button = Gtk.MenuButton.new()
         menu_button.set_icon_name(icon_name='open-menu-symbolic')
