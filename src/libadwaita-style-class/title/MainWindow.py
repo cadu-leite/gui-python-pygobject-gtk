@@ -44,7 +44,8 @@ class ExampleWindow(Adw.ApplicationWindow):
         vbox.set_margin_start(margin=12)
         mbox.append(child=vbox)
 
-        self.label_title_1 = Gtk.Label.new(str="Label com a classe: ['title-1']")
+        self.label_title_1 = Gtk.Label.new(
+            str="Label com a classe: ['title-1']")
         self.label_title_1.add_css_class(css_class='title-1')
         vbox.append(child=self.label_title_1)
 

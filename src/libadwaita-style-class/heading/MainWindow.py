@@ -46,7 +46,8 @@ class ExampleWindow(Adw.ApplicationWindow):
         vbox.set_margin_start(margin=12)
         mbox.append(child=vbox)
 
-        self.label_heading = Gtk.Label.new(str=LOREM.format("Classes: ['heading']"))
+        self.label_heading = Gtk.Label.new(
+            str=LOREM.format("Classes: ['heading']"))
         self.label_heading.set_vexpand(expand=True)
         self.label_heading.set_wrap(wrap=True)
         self.label_heading.add_css_class(css_class='heading')
@@ -62,7 +63,8 @@ class ExampleWindow(Adw.ApplicationWindow):
         else:
             self.label_heading.add_css_class(css_class='heading')
         self.label_heading.set_text(
-            str=LOREM.format(f'Classes: {self.label_heading.get_css_classes()}'),
+            str=LOREM.format(
+                f'Classes: {self.label_heading.get_css_classes()}'),
         )
 
 

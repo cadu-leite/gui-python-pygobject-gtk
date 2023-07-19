@@ -55,7 +55,8 @@ class ExampleWindow(Adw.ApplicationWindow):
         else:
             self.label_heading.add_css_class(css_class='heading')
         self.label_heading.set_text(
-            str=LOREM.format(f'Classes: {self.label_heading.get_css_classes()}'),
+            str=LOREM.format(
+                f'Classes: {self.label_heading.get_css_classes()}'),
         )
 
 
@@ -98,7 +99,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
-    import sys
 
     app = ExampleApplication()
     app.run(sys.argv)

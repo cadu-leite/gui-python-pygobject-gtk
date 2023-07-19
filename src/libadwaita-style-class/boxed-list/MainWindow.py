@@ -77,6 +77,7 @@ class ExampleWindow(Adw.ApplicationWindow):
             title=f'Classes: {self.listbox.get_css_classes()}',
         )
 
+
 class ExampleApplication(Gtk.Application):
 
     def __init__(self):

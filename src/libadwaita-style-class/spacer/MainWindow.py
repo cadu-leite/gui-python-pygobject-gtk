@@ -48,11 +48,13 @@ class ExampleWindow(Adw.ApplicationWindow):
         self.label.add_css_class(css_class='pill')
         vbox.append(child=self.label)
 
-        self.separator = Gtk.Separator.new(orientation=Gtk.Orientation.VERTICAL)
+        self.separator = Gtk.Separator.new(
+            orientation=Gtk.Orientation.VERTICAL)
         self.separator.add_css_class(css_class='spacer')
         vbox.append(child=self.separator)
 
-        label_lorem = Gtk.Label.new(str='Lorem Ipsum is simply dummy text of....')
+        label_lorem = Gtk.Label.new(
+            str='Lorem Ipsum is simply dummy text of....')
         vbox.append(child=label_lorem)
 
         button = Gtk.Button.new_with_label(label='Adicionar/remover classe')

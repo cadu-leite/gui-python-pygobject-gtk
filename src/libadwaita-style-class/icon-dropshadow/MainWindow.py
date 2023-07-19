@@ -52,7 +52,8 @@ class ExampleWindow(Gtk.ApplicationWindow):
         vbox.set_margin_start(margin=12)
         self.set_child(child=vbox)
 
-        self.label = Gtk.Label.new(str=TEXT.format("Classes: ['icon-dropshadow']"))
+        self.label = Gtk.Label.new(
+            str=TEXT.format("Classes: ['icon-dropshadow']"))
         self.label.set_vexpand(expand=True)
         self.label.set_wrap(wrap=True)
         vbox.append(child=self.label)
@@ -72,9 +73,11 @@ class ExampleWindow(Gtk.ApplicationWindow):
 
     def on_button_clicked(self, button):
         if 'icon-dropshadow' in self.image_icon_dropshadow.get_css_classes():
-            self.image_icon_dropshadow.remove_css_class(css_class='icon-dropshadow')
+            self.image_icon_dropshadow.remove_css_class(
+                css_class='icon-dropshadow')
         else:
-            self.image_icon_dropshadow.add_css_class(css_class='icon-dropshadow')
+            self.image_icon_dropshadow.add_css_class(
+                css_class='icon-dropshadow')
         self.label.set_text(
             str=TEXT.format(self.image_icon_dropshadow.get_css_classes()),
         )

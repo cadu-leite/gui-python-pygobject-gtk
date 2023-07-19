@@ -54,7 +54,6 @@ class ExampleWindow(Adw.ApplicationWindow):
     label = Gtk.Template.Child(name='label')
     image_lowres_icon = Gtk.Template.Child(name='image_lowres_icon')
 
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -108,7 +107,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
-    import sys
 
     app = ExampleApplication()
     app.run(sys.argv)

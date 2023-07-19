@@ -46,7 +46,8 @@ class ExampleWindow(Adw.ApplicationWindow):
         vbox.set_margin_start(margin=12)
         mbox.append(child=vbox)
 
-        self.label_dim_label = Gtk.Label.new(str=LOREM.format("Classes: ['dim-label']"))
+        self.label_dim_label = Gtk.Label.new(
+            str=LOREM.format("Classes: ['dim-label']"))
         self.label_dim_label.set_vexpand(expand=True)
         self.label_dim_label.set_wrap(wrap=True)
         self.label_dim_label.add_css_class(css_class='dim-label')
@@ -62,7 +63,8 @@ class ExampleWindow(Adw.ApplicationWindow):
         else:
             self.label_dim_label.add_css_class(css_class='dim-label')
         self.label_dim_label.set_text(
-            str=LOREM.format(f'Classes: {self.label_dim_label.get_css_classes()}'),
+            str=LOREM.format(
+                f'Classes: {self.label_dim_label.get_css_classes()}'),
         )
 
 

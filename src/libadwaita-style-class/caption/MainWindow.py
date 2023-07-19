@@ -55,7 +55,8 @@ class ExampleWindow(Adw.ApplicationWindow):
         label.set_wrap(wrap=True)
         vbox.append(child=label)
 
-        self.label_caption = Gtk.Label.new(str=LOREM.format("Classes: ['caption']"))
+        self.label_caption = Gtk.Label.new(
+            str=LOREM.format("Classes: ['caption']"))
         self.label_caption.set_vexpand(expand=True)
         self.label_caption.set_wrap(wrap=True)
         self.label_caption.add_css_class(css_class='caption')
@@ -71,7 +72,8 @@ class ExampleWindow(Adw.ApplicationWindow):
         else:
             self.label_caption.add_css_class(css_class='caption')
         self.label_caption.set_text(
-            str=LOREM.format(f'Classes: {self.label_caption.get_css_classes()}'),
+            str=LOREM.format(
+                f'Classes: {self.label_caption.get_css_classes()}'),
         )
 
 

@@ -55,7 +55,8 @@ class ExampleWindow(Adw.ApplicationWindow):
         else:
             self.label_dim_label.add_css_class(css_class='dim-label')
         self.label_dim_label.set_text(
-            str=LOREM.format(f'Classes: {self.label_dim_label.get_css_classes()}'),
+            str=LOREM.format(
+                f'Classes: {self.label_dim_label.get_css_classes()}'),
         )
 
 
@@ -98,7 +99,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
-    import sys
 
     app = ExampleApplication()
     app.run(sys.argv)

@@ -54,16 +54,17 @@ class ExampleWindow(Adw.ApplicationWindow):
     label = Gtk.Template.Child(name='label')
     image_icon_dropshadow = Gtk.Template.Child(name='image_icon_dropshadow')
 
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     @Gtk.Template.Callback()
     def on_button_clicked(self, button):
         if 'icon-dropshadow' in self.image_icon_dropshadow.get_css_classes():
-            self.image_icon_dropshadow.remove_css_class(css_class='icon-dropshadow')
+            self.image_icon_dropshadow.remove_css_class(
+                css_class='icon-dropshadow')
         else:
-            self.image_icon_dropshadow.add_css_class(css_class='icon-dropshadow')
+            self.image_icon_dropshadow.add_css_class(
+                css_class='icon-dropshadow')
         self.label.set_text(
             str=TEXT.format(self.image_icon_dropshadow.get_css_classes()),
         )
@@ -108,7 +109,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
-    import sys
 
     app = ExampleApplication()
     app.run(sys.argv)

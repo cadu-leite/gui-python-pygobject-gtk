@@ -68,7 +68,7 @@ class ExampleWindow(Adw.ApplicationWindow):
         entry_error.add_css_class(css_class='error')
         vbox.append(child=entry_error)
 
-       
+
 class ExampleApplication(Gtk.Application):
 
     def __init__(self):

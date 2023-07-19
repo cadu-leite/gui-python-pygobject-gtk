@@ -47,17 +47,21 @@ class ExampleWindow(Adw.ApplicationWindow):
         self.label = Gtk.Label.new(str="Classes: ['toolbar','horizontal']")
         vbox.append(child=self.label)
 
-        self.hbox = Gtk.Box.new(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
+        self.hbox = Gtk.Box.new(
+            orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         self.hbox.add_css_class(css_class='toolbar')
         vbox.append(child=self.hbox)
 
-        button_copy = Gtk.Button.new_from_icon_name(icon_name='edit-copy-symbolic')
+        button_copy = Gtk.Button.new_from_icon_name(
+            icon_name='edit-copy-symbolic')
         self.hbox.append(child=button_copy)
 
-        button_paste = Gtk.Button.new_from_icon_name(icon_name='edit-paste-symbolic')
+        button_paste = Gtk.Button.new_from_icon_name(
+            icon_name='edit-paste-symbolic')
         self.hbox.append(child=button_paste)
 
-        button_cut = Gtk.Button.new_from_icon_name(icon_name='edit-cut-symbolic')
+        button_cut = Gtk.Button.new_from_icon_name(
+            icon_name='edit-cut-symbolic')
         self.hbox.append(child=button_cut)
 
         button = Gtk.Button.new_with_label(label='Adicionar/remover classe')

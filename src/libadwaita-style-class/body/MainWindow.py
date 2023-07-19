@@ -52,7 +52,8 @@ class ExampleWindow(Adw.ApplicationWindow):
         label.set_vexpand(expand=True)
         vbox.append(child=label)
 
-        self.label_body = Gtk.Label.new(str=LOREM.format("Classes: ['title-1']"))
+        self.label_body = Gtk.Label.new(
+            str=LOREM.format("Classes: ['title-1']"))
         self.label_body.set_vexpand(expand=True)
         self.label_body.add_css_class(css_class='title-1')
         vbox.append(child=self.label_body)

@@ -42,7 +42,6 @@ elif operational_system == 'win32':
 class ExampleWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'ExampleWindow'
 
-
     header_bar = Gtk.Template.Child(name='header_bar')
     label = Gtk.Template.Child(name='label')
 
@@ -99,5 +98,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
+
     app = ExampleApplication()
     app.run(sys.argv)

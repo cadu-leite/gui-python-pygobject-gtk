@@ -44,7 +44,8 @@ class ExampleWindow(Adw.ApplicationWindow):
         vbox.set_margin_start(margin=12)
         mbox.append(child=vbox)
 
-        self.hbox_linked = Gtk.Box.new(orientation=Gtk.Orientation.HORIZONTAL, spacing=1)
+        self.hbox_linked = Gtk.Box.new(
+            orientation=Gtk.Orientation.HORIZONTAL, spacing=1)
         self.hbox_linked.add_css_class(css_class='linked')
         vbox.append(child=self.hbox_linked)
 

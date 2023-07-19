@@ -18,7 +18,8 @@ class ExampleWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.set_title(title='Python e GTK: PyGObject style classe caption-heading')
+        self.set_title(
+            title='Python e GTK: PyGObject style classe caption-heading')
         self.set_default_size(width=int(1366 / 2), height=int(768 / 2))
         self.set_size_request(width=int(1366 / 2), height=int(768 / 2))
 
@@ -55,7 +56,8 @@ class ExampleWindow(Adw.ApplicationWindow):
         label.set_wrap(wrap=True)
         vbox.append(child=label)
 
-        self.label_caption_heading = Gtk.Label.new(str=LOREM.format("Classes: ['caption-heading']"))
+        self.label_caption_heading = Gtk.Label.new(
+            str=LOREM.format("Classes: ['caption-heading']"))
         self.label_caption_heading.set_vexpand(expand=True)
         self.label_caption_heading.set_wrap(wrap=True)
         self.label_caption_heading.add_css_class(css_class='caption-heading')
@@ -67,11 +69,14 @@ class ExampleWindow(Adw.ApplicationWindow):
 
     def on_button_clicked(self, button):
         if 'caption-heading' in self.label_caption_heading.get_css_classes():
-            self.label_caption_heading.remove_css_class(css_class='caption-heading')
+            self.label_caption_heading.remove_css_class(
+                css_class='caption-heading')
         else:
-            self.label_caption_heading.add_css_class(css_class='caption-heading')
+            self.label_caption_heading.add_css_class(
+                css_class='caption-heading')
         self.label_caption_heading.set_text(
-            str=LOREM.format(f'Classes: {self.label_caption_heading.get_css_classes()}'),
+            str=LOREM.format(
+                f'Classes: {self.label_caption_heading.get_css_classes()}'),
         )
 
 

@@ -51,11 +51,14 @@ class ExampleWindow(Adw.ApplicationWindow):
     @Gtk.Template.Callback()
     def on_button_clicked(self, button):
         if 'caption-heading' in self.label_caption_heading.get_css_classes():
-            self.label_caption_heading.remove_css_class(css_class='caption-heading')
+            self.label_caption_heading.remove_css_class(
+                css_class='caption-heading')
         else:
-            self.label_caption_heading.add_css_class(css_class='caption-heading')
+            self.label_caption_heading.add_css_class(
+                css_class='caption-heading')
         self.label_caption_heading.set_text(
-            str=LOREM.format(f'Classes: {self.label_caption_heading.get_css_classes()}'),
+            str=LOREM.format(
+                f'Classes: {self.label_caption_heading.get_css_classes()}'),
         )
 
 
@@ -98,7 +101,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
-    import sys
 
     app = ExampleApplication()
     app.run(sys.argv)

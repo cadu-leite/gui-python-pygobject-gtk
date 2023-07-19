@@ -46,7 +46,7 @@ class ExampleWindow(Adw.ApplicationWindow):
 
         self.button_circular = Gtk.Button.new_with_label(
             label="Classes: ['text-button', 'circular']",
-            )
+        )
         self.button_circular.add_css_class(css_class='circular')
         vbox.append(child=self.button_circular)
 

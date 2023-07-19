@@ -97,5 +97,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
+
     app = ExampleApplication()
     app.run(sys.argv)
