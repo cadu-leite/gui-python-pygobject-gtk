@@ -61,8 +61,10 @@ class ExampleWindow(Gtk.ApplicationWindow):
             adw_combo_row.set_subtitle(subtitle='Adw.ComboRow()')
             adw_combo_row.add_prefix(widget=icon)
             adw_combo_row.set_model(model=model)
-            adw_combo_row.connect('notify::selected', self.on_adw_combo_row_selected)
-            adw_combo_row.connect('notify::selected-item', self.on_adw_combo_row_selected_item)
+            adw_combo_row.connect('notify::selected',
+                                  self.on_adw_combo_row_selected)
+            adw_combo_row.connect('notify::selected-item',
+                                  self.on_adw_combo_row_selected_item)
             self.listbox.append(child=adw_combo_row)
 
     def on_adw_combo_row_selected(self, comborow, GParamUInt):

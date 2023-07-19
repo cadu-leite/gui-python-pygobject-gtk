@@ -82,7 +82,8 @@ class ExampleApplication(Gtk.Application):
         dialog.set_comments('Criando interfaces gráficas com a linguagem de'
                             'programação Python (PyGObject) e o toolkit gráfico Gtk')
         dialog.set_website('https://gtk.justcode.com.br')
-        dialog.set_issue_url("https://github.com/natorsc/gui-python-pygobject-gtk/issues")
+        dialog.set_issue_url(
+            "https://github.com/natorsc/gui-python-pygobject-gtk/issues")
         dialog.add_credit_section('Contributors', ['Name-01', 'Name-02'])
         dialog.set_translator_credits('Translator')
         dialog.set_copyright('© 2022 Renato Cruz (natorsc)')
@@ -105,7 +106,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
-    import sys
 
     app = ExampleApplication()
     app.run(sys.argv)

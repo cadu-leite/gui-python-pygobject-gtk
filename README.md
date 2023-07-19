@@ -372,7 +372,6 @@ _gtk_css_corner_value_get_y: assertion 'corner->class == &GTK_CSS_VALUE_CORNER' 
 - [carousel-indicator-dots](src/gtk-libadwaita-widgets/carousel-indicator-dots).
 - [carousel-indicator-lines](src/gtk-libadwaita-widgets/carousel-indicator-lines).
 - [clamp](src/gtk-libadwaita-widgets/clamp).
-- [colorscheme](src/gtk-libadwaita-widgets/colorscheme).
 - [combo-row](src/gtk-libadwaita-widgets/combo-row).
 - [entry-row](src/gtk-libadwaita-widgets/entry-row).
 - [expander-row](src/gtk-libadwaita-widgets/expander-row).

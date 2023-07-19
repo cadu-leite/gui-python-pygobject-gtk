@@ -1,8 +1,11 @@
 using Gtk 4.0;
 using Adw 1;
 
-template PreferencesWindow : Adw.PreferencesWindow {
+template $PreferencesWindow : Adw.PreferencesWindow {
   title: "Python e GTK: PyGObject libadwaita Adw.PreferencesWindow() ui file";
+  modal: true;
+  default-width: 455;
+  default-height: 256;
 
   Adw.PreferencesPage {
     Adw.PreferencesGroup {

@@ -16,7 +16,8 @@ class ExampleWindow(Gtk.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.set_title(title='Python e GTK: PyGObject libadwaita Adw.AdwPreferencesPage()')
+        self.set_title(
+            title='Python e GTK: PyGObject libadwaita Adw.AdwPreferencesPage()')
         self.set_default_size(width=int(1366 / 2), height=int(768 / 2))
         self.set_size_request(width=int(1366 / 2), height=int(768 / 2))
 
@@ -51,7 +52,8 @@ class ExampleWindow(Gtk.ApplicationWindow):
 
         adw_preferences_group = Adw.PreferencesGroup.new()
         adw_preferences_group.set_title(title='AdwPreferencesPage')
-        adw_preferences_group.set_description(description='AdwPreferencesGroup')
+        adw_preferences_group.set_description(
+            description='AdwPreferencesGroup')
         adw_preferences_group.set_header_suffix(suffix=button_flat)
         adw_preferences_page.add(group=adw_preferences_group)
 
@@ -60,7 +62,10 @@ class ExampleWindow(Gtk.ApplicationWindow):
         switch_01.connect('notify::active', self.on_switch_button_clicked)
 
         adw_action_row_01 = Adw.ActionRow.new()
-        adw_action_row_01.set_icon_name(icon_name='edit-find-symbolic')
+        adw_action_row_01.add_prefix(
+            widget=Gtk.Image.new_from_icon_name(
+                icon_name='edit-find-symbolic'),
+        )
         adw_action_row_01.set_title(title='Libadwaita')
         adw_action_row_01.set_subtitle(subtitle='Adw.ActionRow()')
         adw_action_row_01.add_suffix(widget=switch_01)
@@ -71,7 +76,10 @@ class ExampleWindow(Gtk.ApplicationWindow):
         switch_02.connect('notify::active', self.on_switch_button_clicked)
 
         adw_action_row_02 = Adw.ActionRow.new()
-        adw_action_row_02.set_icon_name(icon_name='edit-find-symbolic')
+        adw_action_row_02.add_prefix(
+            widget=Gtk.Image.new_from_icon_name(
+                icon_name='edit-find-symbolic'),
+        )
         adw_action_row_02.set_title(
             title='Libadwaita - Ao clicar na linha widget ativa e desativa'
         )

@@ -29,7 +29,7 @@ APPLICATION_WINDOW = str(BASE_DIR.joinpath('MainWindow.ui'))
 #             subprocess.run(
 #                 args=['blueprint-compiler', 'compile', f'{data}', '--output',
 #                       f'{BASE_DIR.joinpath(data.stem)}.ui'],
-            # )
+# )
 
 
 @Gtk.Template(filename=APPLICATION_WINDOW)
@@ -93,7 +93,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
-    import sys
 
     app = ExampleApplication()
     app.run(sys.argv)

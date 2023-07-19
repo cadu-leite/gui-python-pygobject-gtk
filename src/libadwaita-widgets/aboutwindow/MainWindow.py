@@ -16,7 +16,8 @@ class ExampleWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.set_title(title='Python e GTK: PyGObject libadwaita Adw.AboutWindow()')
+        self.set_title(
+            title='Python e GTK: PyGObject libadwaita Adw.AboutWindow()')
         self.set_default_size(width=int(1366 / 2), height=int(768 / 2))
         self.set_size_request(width=int(1366 / 2), height=int(768 / 2))
 
@@ -79,7 +80,8 @@ class ExampleApplication(Gtk.Application):
         dialog.set_comments('Criando interfaces gráficas com a linguagem de'
                             'programação Python (PyGObject) e o toolkit gráfico Gtk 4')
         dialog.set_website('https://gtk.justcode.com.br')
-        dialog.set_issue_url("https://github.com/natorsc/gui-python-pygobject-gtk4/issues")
+        dialog.set_issue_url(
+            "https://github.com/natorsc/gui-python-pygobject-gtk4/issues")
         dialog.add_credit_section('Contributors', ['Name-01', 'Name-02'])
         dialog.set_translator_credits('Translator')
         dialog.set_copyright('© 2022 Renato Cruz (natorsc)')

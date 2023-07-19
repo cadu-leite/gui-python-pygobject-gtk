@@ -40,7 +40,7 @@
         <property name="title" translatable="true">Página 01</property>
         <property name="child">
           <object class="GtkBox">
-            <property name="orientation">vertical</property>
+            <property name="orientation">1</property>
             <property name="spacing">6</property>
             <child>
               <object class="GtkLabel">
@@ -58,7 +58,7 @@
         <property name="title" translatable="true">Página 02</property>
         <property name="child">
           <object class="GtkBox">
-            <property name="orientation">vertical</property>
+            <property name="orientation">1</property>
             <property name="spacing">6</property>
             <child>
               <object class="GtkLabel">

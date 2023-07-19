@@ -16,7 +16,8 @@ class ExampleWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.set_title(title='Python e GTK: PyGObject libadwaita Adw.Application()')
+        self.set_title(
+            title='Python e GTK: PyGObject libadwaita Adw.Application()')
         self.set_default_size(width=int(1366 / 2), height=int(768 / 2))
         self.set_size_request(width=int(1366 / 2), height=int(768 / 2))
 
@@ -27,7 +28,8 @@ class ExampleWindow(Adw.ApplicationWindow):
         vbox.append(child=header_bar)
 
         menu_button_model = Gio.Menu()
-        menu_button_model.append(label='Preferências', detailed_action='app.preferences')
+        menu_button_model.append(label='Preferências',
+                                 detailed_action='app.preferences')
 
         menu_button = Gtk.MenuButton.new()
         menu_button.set_icon_name(icon_name='open-menu-symbolic')

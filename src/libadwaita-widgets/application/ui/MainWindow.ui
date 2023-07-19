@@ -7,7 +7,7 @@
     <property name="default-height">384</property>
     <child>
       <object class="GtkBox">
-        <property name="orientation">vertical</property>
+        <property name="orientation">1</property>
         <property name="spacing">12</property>
         <child type="titlebar">
           <object class="GtkHeaderBar" id="header_bar">

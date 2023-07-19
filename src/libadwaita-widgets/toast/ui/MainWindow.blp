@@ -21,17 +21,26 @@ template $ExampleWindow: Gtk.ApplicationWindow {
     margin-bottom: 12;
     margin-start: 12;
 
-    Button button {
-      label: "Clique aqui";
-      valign: center;
-      vexpand: true;
-      clicked => $on_button_clicked();
+    Gtk.Box {
+      orientation: vertical;
+      margin-top: 12;
+      margin-end: 12;
+      margin-bottom: 12;
+      margin-start: 12;
+      spacing: 12;
+
+      Button button {
+        label: "Clique aqui";
+        valign: center;
+        vexpand: true;
+        clicked => $on_button_clicked();
+      }
     }
   }
+}
 
-  Adw.Toast toast {
-    dismissed => $on_toast_dismissed();
-  }
+Adw.Toast toast {
+  dismissed => $on_toast_dismissed();
 }
 
 menu primary_menu {

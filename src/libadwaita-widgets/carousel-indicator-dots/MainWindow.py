@@ -16,7 +16,8 @@ class ExampleWindow(Gtk.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.set_title(title='Python e GTK: PyGObject libadwaita Adw.CarouselIndicatorDots()')
+        self.set_title(
+            title='Python e GTK: PyGObject libadwaita Adw.CarouselIndicatorDots()')
         self.set_default_size(width=int(1366 / 2), height=int(768 / 2))
         self.set_size_request(width=int(1366 / 2), height=int(768 / 2))
 
@@ -61,7 +62,8 @@ class ExampleWindow(Gtk.ApplicationWindow):
 
         # Loop de repetição para criar os widgets.
         for n in range(1, 11):
-            page = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=12)
+            page = Gtk.Box.new(
+                orientation=Gtk.Orientation.VERTICAL, spacing=12)
             adw_carousel.insert(child=page, position=n)
 
             label = Gtk.Label.new(str=f'Página {n}')

@@ -41,7 +41,8 @@ class ExampleWindow(Gtk.ApplicationWindow):
         self.set_titlebar(titlebar=header_bar)
 
         flap_Toggle_button = Gtk.ToggleButton.new()
-        flap_Toggle_button.set_icon_name(icon_name='sidebar-show-right-symbolic')
+        flap_Toggle_button.set_icon_name(
+            icon_name='sidebar-show-right-symbolic')
         flap_Toggle_button.connect('clicked', self.on_flap_button_toggled)
         header_bar.pack_start(child=flap_Toggle_button)
 
@@ -54,7 +55,8 @@ class ExampleWindow(Gtk.ApplicationWindow):
         self.adw_flap.set_content(content=stack)
 
         # Página 1
-        box_page_1 = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        box_page_1 = Gtk.Box.new(
+            orientation=Gtk.Orientation.VERTICAL, spacing=6)
         stack.add_titled(child=box_page_1, name='pagina1', title='Página 1')
 
         label_page_1 = Gtk.Label.new(str='Página 1')
@@ -62,7 +64,8 @@ class ExampleWindow(Gtk.ApplicationWindow):
         box_page_1.append(child=label_page_1)
 
         # Página 2
-        box_page_2 = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        box_page_2 = Gtk.Box.new(
+            orientation=Gtk.Orientation.VERTICAL, spacing=6)
         stack.add_titled(child=box_page_2, name='pagina2', title='Página 2')
 
         label_page_2 = Gtk.Label.new(str='Página 2')

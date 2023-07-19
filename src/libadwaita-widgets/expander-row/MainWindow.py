@@ -12,6 +12,7 @@ Adw.init()
 
 text = '<big>Lorem ipsum</big>\n\nLorem ipsum dolor sit amet, consectetur...'
 
+
 class ExampleWindow(Gtk.ApplicationWindow):
     items = ['Item 01', 'Item 02', 'Item 03', 'Item 04']
 

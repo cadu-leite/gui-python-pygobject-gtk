@@ -35,17 +35,18 @@ class ExampleWindow(Gtk.ApplicationWindow):
         header_bar.pack_end(child=menu_button)
 
         self.toast_overlay = Adw.ToastOverlay.new()
-        self.toast_overlay.set_margin_top(margin=12)
-        self.toast_overlay.set_margin_end(margin=12)
-        self.toast_overlay.set_margin_bottom(margin=12)
-        self.toast_overlay.set_margin_start(margin=12)
         self.set_child(child=self.toast_overlay)
 
+        vbox = Gtk.Box.new(orientation=Gtk.Orientation.VERTICAL, spacing=12)
+        vbox.set_margin_top(margin=12)
+        vbox.set_margin_end(margin=12)
+        vbox.set_margin_bottom(margin=12)
+        vbox.set_margin_start(margin=12)
+        self.toast_overlay.set_child(child=vbox)
+
         self.button = Gtk.Button.new_with_label(label='Clique aqui')
-        self.button.set_valign(align=Gtk.Align.CENTER)
-        self.button.set_vexpand(expand=True)
         self.button.connect('clicked', self.on_button_clicked)
-        self.toast_overlay.set_child(child=self.button)
+        vbox.append(child=self.button)
 
         self.toast = Adw.Toast.new(title='')
         self.toast.connect('dismissed', self.on_toast_dismissed)

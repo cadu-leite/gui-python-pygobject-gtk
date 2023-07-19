@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """Python e GTK: PyGObject libadwaita Adw.PreferencesWindow() ui file."""
 
-import subprocess
-import sys
 from pathlib import Path
 
 import gi

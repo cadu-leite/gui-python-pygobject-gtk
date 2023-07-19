@@ -6,11 +6,10 @@ import sys
 from pathlib import Path
 
 import gi
+from AdwPreferencesWindow import AdwPreferencesWindow
 
 gi.require_version(namespace='Gtk', version='4.0')
 gi.require_version(namespace='Adw', version='1')
-
-from AdwPreferencesWindow import AdwPreferencesWindow
 
 from gi.repository import Adw, Gio, Gtk
 
@@ -72,7 +71,7 @@ class ExampleApplication(Gtk.Application):
 
     def on_preferences_action(self, action, param):
         adw_preferences_window = AdwPreferencesWindow()
-        adw_preferences_window.show()
+        adw_preferences_window.present()
 
     def exit_app(self, action, param):
         self.quit()
@@ -89,7 +88,6 @@ class ExampleApplication(Gtk.Application):
 
 
 if __name__ == '__main__':
-    import sys
 
     app = ExampleApplication()
     app.run(sys.argv)
