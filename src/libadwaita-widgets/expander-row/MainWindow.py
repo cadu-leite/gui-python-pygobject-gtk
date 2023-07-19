@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Python e GTK: PyGObject Gtk.ListBox() Adw.ExpanderRow()."""
+"""Python e GTK: PyGObject Adw.ExpanderRow()."""
 
 import gi
 

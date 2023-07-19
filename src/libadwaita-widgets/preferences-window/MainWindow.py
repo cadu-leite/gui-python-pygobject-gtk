@@ -137,6 +137,17 @@ class ExampleApplication(Gtk.Application):
 
     def on_preferences_action(self, action, param):
         adw_preferences_window = AdwPreferencesWindow()
+        adw_preferences_window.set_transient_for(
+            parent=self.get_active_window(),
+        )
+        adw_preferences_window.set_default_size(
+            width=int(1366 / 3),
+            height=int(768 / 3),
+        )
+        adw_preferences_window.set_size_request(
+            width=int(1366 / 3),
+            height=int(768 / 3),
+        )
         adw_preferences_window.present()
 
     def exit_app(self, action, param):

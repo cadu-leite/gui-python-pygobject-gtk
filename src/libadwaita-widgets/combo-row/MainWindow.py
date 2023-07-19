@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Python e GTK: PyGObject Gtk.ListBox() Adw.ComboRow()."""
+"""Python e GTK: PyGObject Adw.ComboRow()."""
 
 import gi
 
