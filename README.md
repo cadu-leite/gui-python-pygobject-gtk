@@ -70,7 +70,7 @@ Obrigado por sua doação é através dela que consigo manter este conteúdo �
 
 ## Tutoriais
 
-- [https://natorsc.hashnode.dev/series/gtk](https://natorsc.hashnode.dev/series/gtk).
+- [https://blog.justcode.com.br/series/gtk](https://blog.justcode.com.br/series/gtk).
 
 ---
 
